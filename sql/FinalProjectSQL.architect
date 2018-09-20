@@ -221,7 +221,7 @@
   <table id="TAB57" populated="true" UUID="f3ebae1a-94f9-4bee-b08d-f9d5391e90de" name="ActivityType" objectType="TABLE" physicalName="ActivityType" >
    <remarks></remarks>
    <folder id="FOLTAB571" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL58" populated="true" UUID="cc291f91-2677-42c3-a343-e8cb327f50e5" autoIncrement="true" autoIncrementSequenceName="ActivityType_ActivityTypeId_seq_1" defaultValue="" name="ActivityTypeId" nullable="0" physicalName="ActivityTypeId" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL58" populated="true" UUID="cc291f91-2677-42c3-a343-e8cb327f50e5" autoIncrement="true" autoIncrementSequenceName="ActivityType_ActivityTypeId_seq" defaultValue="" name="ActivityTypeId" nullable="0" physicalName="ActivityTypeId" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL59" populated="true" UUID="406ac745-149a-4e51-879b-38ec0abd3103" autoIncrement="false" autoIncrementSequenceName="ActivityType_ActivityTypeName_seq" defaultValue="" name="ActivityTypeName" nullable="0" physicalName="ActivityTypeName" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -431,10 +431,10 @@
   <table id="TAB107" populated="true" UUID="275440cb-e55d-4770-8d4d-5b209d5d99c9" name="TripAccommodation" objectType="TABLE" physicalName="TripAccommodation" >
    <remarks></remarks>
    <folder id="FOLTAB1071" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL108" populated="true" UUID="1b73e801-a1c0-4aff-95c2-72bb91ddfed1" autoIncrement="false" autoIncrementSequenceName="Accommodation_AccommodationId_seq" defaultValue="" name="AccommodationId" nullable="0" physicalName="AccommodationId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL108" populated="true" UUID="1b73e801-a1c0-4aff-95c2-72bb91ddfed1" autoIncrement="false" autoIncrementSequenceName="TripAccommodation_AccommodationId_seq" defaultValue="" name="AccommodationId" nullable="0" physicalName="AccommodationId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL109" populated="true" UUID="5a686df7-74a1-42aa-b90a-d4afefb942b4" autoIncrement="false" autoIncrementSequenceName="Trip_TripId_seq" defaultValue="" name="TripId" nullable="0" physicalName="TripId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL109" populated="true" UUID="5a686df7-74a1-42aa-b90a-d4afefb942b4" autoIncrement="false" autoIncrementSequenceName="TripAccommodation_TripId_seq" defaultValue="" name="TripId" nullable="0" physicalName="TripId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL110" populated="true" UUID="2dd6e22a-8977-462b-9c51-6255223b1e82" autoIncrement="false" autoIncrementSequenceName="TripAccommodation_StartDate_seq" defaultValue="" name="StartDate" nullable="0" physicalName="StartDate" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
@@ -459,7 +459,7 @@
     <column id="COL114" populated="true" UUID="11e6fe0f-c9a1-48a0-b0ad-1b0cf2831ea5" autoIncrement="false" autoIncrementSequenceName="Dining_DiningOptionId_seq" defaultValue="" name="DiningId" nullable="0" physicalName="DiningId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL115" populated="true" UUID="2298e7aa-6f10-468d-acb5-b7f03ce42ea6" autoIncrement="false" autoIncrementSequenceName="Trip_TripId_seq" defaultValue="" name="TripId" nullable="0" physicalName="TripId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL115" populated="true" UUID="2298e7aa-6f10-468d-acb5-b7f03ce42ea6" autoIncrement="false" autoIncrementSequenceName="TripDining_TripId_seq" defaultValue="" name="TripId" nullable="0" physicalName="TripId" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -546,25 +546,25 @@
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="0.9999999999999993" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="674" y="44" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB9" x="674" y="601" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB9" x="674" y="601" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB16" x="21" y="196" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB23" x="1012" y="601" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB31" x="1341" y="601" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB36" x="351" y="601" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB44" x="1341" y="196" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB23" x="1012" y="601" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB31" x="1341" y="601" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB36" x="351" y="601" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB44" x="1341" y="196" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB52" x="1341" y="44" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB57" x="21" y="601" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB57" x="21" y="601" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB62" x="1012" y="44" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB66" x="21" y="44" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB71" x="674" y="421" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB75" x="351" y="421" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB71" x="674" y="421" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB75" x="351" y="421" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB79" x="351" y="196" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB85" x="1341" y="421" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB85" x="1341" y="421" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB90" x="21" y="421" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB95" x="674" y="196" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB103" x="351" y="44" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB107" x="1012" y="421" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB113" x="1012" y="196" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB107" x="1012" y="421" bgColor="0xe6d794" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB113" x="1012" y="196" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL135" pkConnection="0.49206349206349204" fkConnection="0.40540540540540543" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
   <table-link relationship-ref="REL123" pkConnection="0.49473684210526314" fkConnection="0.42342342342342343" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
   <table-link relationship-ref="REL125" pkConnection="0.6511627906976745" fkConnection="0.33739837398373984" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
