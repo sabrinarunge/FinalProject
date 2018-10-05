@@ -1,0 +1,30 @@
+@(userId : String, firstName : String)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<h1>Hi @firstName, here is your profile. What would you like to do?</h1>
+
+    <input type="submit" id="chat" name="chat" value="Chat With Consultant">
+<form action="@routes.UserController.getUserInformation" method="GET">
+    <input type="submit" id="updateinformation" name="updateinformation" value="Update Information">
+</form>
+
+<form action="@routes.TripController.getExistingTrips" method="GET">
+    <input type="submit" id="viewtrips" name="viewtrips" value="View Existing Trips">
+</form>
+
+<form action="@routes.TripController.getTripInformation" method="GET">
+    @helper.CSRF.formField
+    <input type="submit" id="addtrip" name="addtrip" value="Add New Trip">
+</form>
+
+<form action="@routes.UserController.getUserLogin" method="GET">
+    @helper.CSRF.formField
+    <input type="submit" id="logout" name="logout" value="Log Out">
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+</head>
+<body>
+<form action="@routes.ConsultantController.getConsultantDashboard" method="GET">
+    @helper.CSRF.formField
+    <input type="submit" id="backtodashboard" name="backtodashboard" value="Back To Dashboard">
+</form>
+</body>
+</html>

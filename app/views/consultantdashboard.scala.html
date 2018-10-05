@@ -1,0 +1,47 @@
+@(submittedTrips : List[SubmittedTrip])
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  #map {
+    height: 400px;
+    width: 300px;
+  }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Consultant Dashboard</title>
+</head>
+<body>
+<h1>Welcome to the Consultant Dashboard</h1>
+<table>
+    <tr>
+        <th>Requested Trip ID</th>
+        <th>Trip Purpose</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    @for(submittedTrip <- submittedTrips) {
+    <tr>
+        <td>@submittedTrip.getReqTripId</td>
+        <td><a href="/trip/@submittedTrip.getReqTripId">@submittedTrip.getTripPurpose</a></td>
+        <td>@submittedTrip.getFirstName</td>
+        <td>@submittedTrip.getLastName</td>
+        <td>@submittedTrip.getStartDate</td>
+        <td>@submittedTrip.getEndDate</td>
+    </tr>
+    }
+</table>
+<form action="@routes.ConsultantController.getUsers" method="GET">
+    @helper.CSRF.formField
+    <input type="submit" id="users" name="users" value="Users">
+</form>
+<div id="map" ></div>
+</body>
+<script src="/assets/javascripts/initmap.js">
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-UYlhLmGHIFaX_ePY7j8R0DmX6F0Hsk&callback=initMap">
+</script>
+</html>

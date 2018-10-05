@@ -6,8 +6,20 @@
 GET     /                           controllers.HomeController.index
 
 GET     /usersignup                 controllers.UserController.getSignUp
-GET     /userinput                  controllers.UserController.getUserInput
+POST    /usersignup                 controllers.UserController.postSignUp
+GET     /userlogin                  controllers.UserController.getUserLogin
+POST    /userlogin                  controllers.UserController.postUserLogin
+GET     /userinformation            controllers.UserController.getUserInformation
+POST    /userinformation            controllers.UserController.postUserInformation
+GET     /userprofile                controllers.UserController.getUserProfile
 
+GET     /tripinformation            controllers.TripController.getTripInformation
+POST    /tripinformation            controllers.TripController.postTripInformation
+GET     /existingtrips              controllers.TripController.getExistingTrips
+
+GET     /consultantdashboard        controllers.ConsultantController.getConsultantDashboard
+GET     /trip/:reqTripId            controllers.ConsultantController.getTrip(reqTripId:Integer)
+GET     /users                      controllers.ConsultantController.getUsers
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count

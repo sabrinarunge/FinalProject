@@ -1,0 +1,111 @@
+@(userReqTrips : List[UserReqTrip], trips : List[ReqTrip], userDestinations : List[UserDestination], userAccommodations : List[UserAccommodation], userActivities : List[UserActivity], userDinings : List[UserDining], userTransportations : List[UserTransportation])
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  #map {
+    height: 400px;
+    width: 300px;
+  }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Trip (insert ReqTrip #)</title>
+</head>
+<body>
+<h2>User</h2>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Zip Code</th>
+        <th>Restrictions</th>
+    </tr>
+    @for(userReqTrip <- userReqTrips) {
+    <tr>
+        <td>@userReqTrip.getFirstName</td>
+        <td>@userReqTrip.getLastName</td>
+        <td>@userReqTrip.getEmailAddress</td>
+        <td>@userReqTrip.getZipCode</td>
+        <td>@userReqTrip.getRestriction</td>
+    </tr>
+    }
+    </th>
+</table>
+<h2>Requested Trip</h2>
+<table>
+    <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Number Of Travelers</th>
+        <th>Pets</th>
+        <th>Budget</th>
+        <th>Trip Purpose</th>
+        <th>Non-Negotiable</th>
+        <th>Notes</th>
+    </tr>
+    @for(trip <- trips) {
+    <tr>
+        <td>@trip.getStartDate</td>
+        <td>@trip.getEndDate</td>
+        <td>@trip.getNumberOfTravelers</td>
+        <td>@trip.getPets</td>
+        <td>@trip.getBudget</td>
+        <td>@trip.getTripPurpose</td>
+        <td>@trip.getNonNegotiable</td>
+        <td>@trip.getNotes</td>
+    </tr>
+    }
+</table>
+<h2>Destination</h2>
+<table>
+    @for(userDestination <- userDestinations) {
+    <tr>
+        <td>@userDestination.getDestinationName</td>
+    </tr>
+    }
+</table>
+<h2>Accommodation</h2>
+<table>
+    @for(userAccommodation <- userAccommodations) {
+    <tr>
+        <td>@userAccommodation.getAccommodationTypeName</td>
+    </tr>
+    }
+</table>
+<h2>Activities</h2>
+<table>
+    @for(userActivity <- userActivities) {
+    <tr>
+        <td>@userActivity.getActivityTypeName</td>
+    </tr>
+    }
+</table>
+<h2>Dining</h2>
+<table>
+    @for(userDining <- userDinings) {
+    <tr>
+        <td>@userDining.getDiningTypeName</td>
+    </tr>
+    }
+</table>
+<h2>Transportation</h2>
+<table>
+    @for(userTransportation <- userTransportations) {
+    <tr>
+        <td>@userTransportation.getTransportationTypeName</td>
+    </tr>
+    }
+</table>
+<form action="@routes.ConsultantController.getConsultantDashboard" method="GET">
+    @helper.CSRF.formField
+    <input type="submit" id="backtodashboard" name="backtodashboard" value="Back To Dashboard">
+</form>
+<div id="map" ></div>
+</body>
+<script src="/assets/javascripts/initmap.js">
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-UYlhLmGHIFaX_ePY7j8R0DmX6F0Hsk&callback=initMap">
+</script>
+</html>

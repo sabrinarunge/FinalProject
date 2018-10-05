@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+</head>
+<body>
+<h1>Log in to your account:</h1>
+<form method="POST">
+    @helper.CSRF.formField
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <input type="submit" id="login" name="login" value="Log In">
+</form>
+
+<br><label>Don't have an account?</label><br>
+
+<form action="@routes.UserController.getSignUp">
+    @helper.CSRF.formField
+    <input type="submit" id="signup" name="signup" value="Create an Account">
+</form>
+</body>
+</html>

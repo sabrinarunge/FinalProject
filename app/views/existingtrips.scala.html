@@ -1,0 +1,36 @@
+@(userId : String, existingTrips : List[ExistingTrip])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Existing Trips</title>
+</head>
+<body>
+<h2>Your Trip Submissions: </h2>
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Requested Trip ID</th>
+        <th>Destination</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+
+    </tr>
+    @for(existingTrip <- existingTrips) {
+    <tr>
+        <td>@existingTrip.getUserId</td>
+        <td>@existingTrip.getReqTripId</td>
+        <td>@existingTrip.getDestinationName</td>
+        <td>@existingTrip.getStartDate</td>
+        <td>@existingTrip.getEndDate</td>
+    </tr>
+    }
+</table>
+<h2>Your Trip Recommendations: </h2>
+<p>Add a box that allows users to select a trip to look at</p>
+<form action="@routes.UserController.getUserProfile" method="GET">
+    @helper.CSRF.formField
+    <input type="submit" id="backtoprofile" name="backtoprofile" value="Back To Profile">
+</form>
+</body>
+</html>
