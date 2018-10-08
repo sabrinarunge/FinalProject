@@ -3,28 +3,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/maps.css")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/datepicker.css")"/>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("slick/slick.css")"/>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("slick/slick-theme.css")"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/templatemo-style.css")">
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>User Information</title>
 </head>
 <body>
-<h1>Update Information:</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="width: 2 rem;">
+                <div class="card-body">
+                    <h3 class="card-title">Update Information</h3>
+                    <form method="POST">
+                        @helper.CSRF.formField
+                        <label for="emailaddress">Email Address</label>
+                        <input type="text" class="card-text" id="emailaddress" name="emailaddress" value="@user.getEmailAddress"><br>
+                        <label for="oldpassword">Old Password: </label>
+                        <input type="password" class="card-text" id="oldpassword" name="oldpassword"><br>
+                        <label for="newpassword">New Password: </label>
+                        <input type="password" class="card-text" id="newpassword" name="newpassword"><br>
+                        <label for="firstname">First Name: </label>
+                        <input type="text" class="card-text" id="firstname" name="firstname" value="@user.getFirstName"><br>
+                        <label for="lastname">Last Name: </label>
+                        <input type="text" class="card-text" id="lastname" name="lastname"  value="@user.getLastName"><br>
+                        <label for="zipcode">Zip Code: </label>
+                        <input type="number" class="card-text" id="zipcode" name="zipcode" value="@user.getZipCode"><br>
+                        <label for="birthdate">Birthday: </label>
+                        <input type="date" class="card-text" id="birthdate" name="birthdate" value="@user.getBirthDate"><br>
+                        <input type="submit" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight" id="submit" name="submit" value="Submit">
+                    </form>
+                    <form action="@routes.UserController.getUserProfile" method="GET">
+                        @helper.CSRF.formField
+                        <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back To Profile</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<form method="POST">
-    @helper.CSRF.formField
-    <label for="emailaddress">Email Address</label>
-    <input type="text" id="emailaddress" name="emailaddress" value="@user.getEmailAddress"><br>
-    <label for="oldpassword">Old Password: </label>
-    <input type="password" id="oldpassword" name="oldpassword"><br>
-    <label for="newpassword">New Password: </label>
-    <input type="password" id="newpassword" name="newpassword"><br>
-    <label for="firstname">First Name: </label>
-    <input type="text" id="firstname" name="firstname" value="@user.getFirstName"><br>
-    <label for="lastname">Last Name: </label>
-    <input type="text" id="lastname" name="lastname"  value="@user.getLastName"><br>
-    <label for="zipcode">Zip Code: </label>
-    <input type="number" id="zipcode" name="zipcode" value="@user.getZipCode"><br>
-    <label for="birthdate">Birthday: </label>
-    <input type="date" id="birthdate" name="birthdate" value="@user.getBirthDate"><br>
-    <input type="submit" id="submit" name="submit" value="Submit">
-</form>
+
 </body>
 </html>

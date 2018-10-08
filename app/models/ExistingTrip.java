@@ -12,14 +12,16 @@ public class ExistingTrip
     private String destinationName;
     private LocalDate startDate;
     private LocalDate endDate;
+    private String tripPurpose;
 
-    public ExistingTrip(int userId, int reqTripId, String destinationName, LocalDate startDate, LocalDate endDate)
+    public ExistingTrip(int userId, int reqTripId, String destinationName, LocalDate startDate, LocalDate endDate, String tripPurpose)
     {
         this.userId = userId;
         this.reqTripId = reqTripId;
         this.destinationName = destinationName;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.tripPurpose = tripPurpose;
     }
 
     public int getUserId()
@@ -70,5 +72,15 @@ public class ExistingTrip
     public void setEndDate(LocalDate endDate)
     {
         this.endDate = endDate;
+    }
+
+    public String getTripPurpose()
+    {
+        return tripPurpose;
+    }
+
+    public void setTripPurpose(String tripPurpose)
+    {
+        this.tripPurpose = tripPurpose;
     }
 }

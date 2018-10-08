@@ -1,30 +1,101 @@
-@(userId : String, firstName : String)
+@(userId : Integer, firstName : String, user : User, existingTrips : List[ExistingTrip])
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/maps.css")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/datepicker.css")"/>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("slick/slick.css")"/>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("slick/slick-theme.css")"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/templatemo-style.css")">
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>User Profile</title>
 </head>
 <body>
-<h1>Hi @firstName, here is your profile. What would you like to do?</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="card" style="width: 2 rem;">
+                <img class="card-img-top" src="../assets/images/profilephoto.jpg" height="500">
+                <div class="card-body">
+                    <h3 class="card-title">@user.getFirstName @user.getLastName</h3>
+                    <p class="card-text">Email Address: @user.getEmailAddress</p>
+                    <p class="card-text">Birthday: @user.getBirthDate</p>
+                    <p class="card-text">Zip Code: @user.getZipCode</p>
+                    <form action="@routes.UserController.getUserInformation" method="GET">
+                        @helper.CSRF.formField
+                        <a href="@routes.UserController.getUserInformation" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Update Information</a>
+                    </form>
+                    <form action="@routes.UserController.getUserLogin" method="GET">
+                        @helper.CSRF.formField
+                        <a href="@routes.UserController.getUserLogin" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Log Out</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="card" style="width: 2 rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Trip Requests</h5>
+                    <table class="card-text table">
+                        <tr>
+                            <th>Trip Purpose</th>
+                            <th>Requested Trip ID</th>
+                            <th>Destination</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
 
-    <input type="submit" id="chat" name="chat" value="Chat With Consultant">
-<form action="@routes.UserController.getUserInformation" method="GET">
-    <input type="submit" id="updateinformation" name="updateinformation" value="Update Information">
-</form>
+                        </tr>
+                        @for(existingTrip <- existingTrips) {
+                        <tr>
+                            <td><a href="/existingtrips/@existingTrip.getReqTripId">@existingTrip.getTripPurpose</a></td>
+                            <td>@existingTrip.getReqTripId</td>
+                            <td>@existingTrip.getDestinationName</td>
+                            <td>@existingTrip.getStartDate</td>
+                            <td>@existingTrip.getEndDate</td>
+                        </tr>
+                        }
+                    </table>
+                    <form action="@routes.TripController.getTripInformation" method="GET">
+                        @helper.CSRF.formField
+                        <a href="@routes.TripController.getTripInformation" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Add New Trip</a>
+                    </form>
+                </div>
+            </div>
+            <div class="card" style="width: 2 rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Your Recommendations</h5>
+                    <table class="card-text table">
+                        <tr>
+                            <th>Trip Purpose</th>
+                            <th>Requested Trip ID</th>
+                            <th>Destination</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
 
-<form action="@routes.TripController.getExistingTrips" method="GET">
-    <input type="submit" id="viewtrips" name="viewtrips" value="View Existing Trips">
-</form>
-
-<form action="@routes.TripController.getTripInformation" method="GET">
-    @helper.CSRF.formField
-    <input type="submit" id="addtrip" name="addtrip" value="Add New Trip">
-</form>
-
-<form action="@routes.UserController.getUserLogin" method="GET">
-    @helper.CSRF.formField
-    <input type="submit" id="logout" name="logout" value="Log Out">
-</form>
+                        </tr>
+                        @for(existingTrip <- existingTrips) {
+                        <tr>
+                            <td>Filler</td>
+                            <td>Filler</td>
+                            <td>Filler</td>
+                            <td>Filler</td>
+                            <td>Filler</td>
+                        </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

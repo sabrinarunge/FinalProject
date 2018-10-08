@@ -3,90 +3,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/maps.css")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/datepicker.css")"/>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("slick/slick.css")"/>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("slick/slick-theme.css")"/>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/templatemo-style.css")">
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <title>Trip Information</title>
 </head>
 <body>
-<h1>Add a New Trip?</h1>
-<form method="POST">
-    @helper.CSRF.formField
-    <label for="budget">What is your budget?</label>
-    <input type="number" id="budget" name="budget" value="500"><br>
+<div class="container-fluid">
+    <div class="row tm-banner-row" id="tm-section-search">
+        <form method="POST" class="tm-search-form tm-section-pad-2">
+            @helper.CSRF.formField
+            <div class="form-row tm-search-form-row">
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                    <h1>Add a New Trip?</h1>
+                    <label for="budget">What is your budget?</label>
+                    <input name="budget" type="number" class="form-control" id="budget" value="500">
+                </div>
+                <div class="form-group tm-form-group tm-form-group-1">
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                        <label>Do you have a destination in mind?</label>
+                        <input type="radio" name="destination" class="form-control" value="Yes">Yes
+                        <input type="radio" name="destination" class="form-control" value="No">No
+                        <label for="destinationchoice">If yes, what is it?</label>
+                        <input type="text" id="destinationchoice" name="destinationchoice" value="Bermuda">
+                    </div>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                        <label for="numberoftravelers">How many people will be traveling?</label>
+                        <input type="number" id="numberoftravelers" name="numberoftravelers" class="form-control" value="2">
+                    </div>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                        <label>Will any pets be accompanying you?</label>
+                        <input type="radio" name="pets" class="form-control" value="yes">Yes
+                        <input type="radio" name="pets" class="form-control" value="no">No
+                    </div>
+                </div>
+            </div> <!-- form-row -->
+            <div class="form-row tm-search-form-row">
 
-    <label>Do you have a destination in mind?</label>
-    <input type="radio" name="destination" value="Yes">Yes
-    <input type="radio" name="destination" value="No">No<br>
-    <label for="destinationchoice">If yes, what is it?</label>
-    <input type="text" id="destinationchoice" name="destinationchoice" value="Bermuda"><br>
-
-    <label>What dates would work for your trip?</label><br>
-    <label for="startdate">Start Date: </label>
-    <input type="date" id="startdate" name="startdate" value="2018-10-03">
-    <label for="enddate">End Date: </label>
-    <input type="date" id="enddate" name="enddate" value="2018-10-07"><br>
-
-    <label for="numberoftravelers">How many people will be traveling?</label>
-    <input type="number" id="numberoftravelers" name="numberoftravelers" value="2"><br>
-
-    <label>Will any pets be accompanying you?</label>
-    <input type="radio" name="pets" value="yes">Yes
-    <input type="radio" name="pets" value="no">No<br>
-
-    <label for="purpose">What is the purpose of this trip?</label>
-    <input type="textarea" name="purpose" id="purpose" value="Vacation"><br>
-
-    <label for="transportation">How would you like to get there?</label>
-    <select id="transportation" name="transportation">
-        <option value="airline" selected="selected">Airline</option>
-        <option value="personalcar">Personal Car</option>
-        <option value="rentalcar">Rental Car</option>
-        <option value="bus">Bus</option>
-        <option value="train">Train</option>
-        <option value="boat">Boat</option>
-    </select><br>
-
-    <label for="accommodation">What type of accommodations would you prefer?</label>
-    <select id="accommodation" name="accommodation" >
-        <option value="hotel" selected="selected">Hotel</option>
-        <option value="apartment">Apartment</option>
-        <option value="vacationhome">Vacation Home</option>
-        <option value="bedandbreakfast">Bed & Breakfast</option>
-        <option value="hostel">Hostel</option>
-        <option value="motel">Motel</option>
-        <option value="guesthouse">Guest House</option>
-        <option value="villa">Villa</option>
-        <option value="homestay">Homestay</option>
-    </select><br>
-
-    <label>What kinds of activities are you looking forward to doing?</label><br>
-    <input type="checkbox" name="activity[]" value="1">Outdoors (e.g. hiking, skiing)<br>
-    <input type="checkbox" name="activity[]" value="2">Cultural (e.g. museums, art galleries, festivals)<br>
-    <input type="checkbox" name="activity[]" value="3">Nightlife (e.g. bar hopping, dancing)<br>
-    <input type="checkbox" name="activity[]" value="4">Sightseeing (e.g. Eiffel Tower, London Eye)<br>
-    <input type="checkbox" name="activity[]" value="5">Food and Alcohol (e.g. wine tasting, cooking class)<br>
-    <input type="checkbox" name="activity[]" value="6">Wildlife (e.g. safari, zoo)<br>
-    <input type="checkbox" name="activity[]" value="7">Entertainment (e.g. concert, play)<br>
-    <input type="checkbox" name="activity[]" value="8">Educational (e.g. pottery-making workshop)<br>
-    <input type="checkbox" name="activity[]" value="9">Guided Tour (e.g. walking tour, bus tour)<br>
-    <input type="checkbox" name="activity[]" value="10">Shopping (pretty self explanatory)<br>
-    <input type="checkbox" name="activity[]" value="11">Family Friendly (suitable for kids and adults)<br>
-
-    <label>What are your dining preferences while traveling?</label><br>
-    <input type="checkbox" name="dining[]" value="1">Casual Restaurants<br>
-    <input type="checkbox" name="dining[]" value="2">Fast Food<br>
-    <input type="checkbox" name="dining[]" value="3">Fine Dining<br>
-    <input type="checkbox" name="dining[]" value="4">Street Food<br>
-    <input type="checkbox" name="dining[]" value="5">Bakeries<br>
-    <input type="checkbox" name="dining[]" value="6">Coffee Shops<br>
-    <input type="checkbox" name="dining[]" value="7">Cooking For Yourself<br>
-    <input type="checkbox" name="dining[]" value="8">Deliveries<br>
-
-    <label for="nonnegotiable">Do you have any "must-dos" for this trip? Leave blank if you have none.</label>
-    <input type="text" id="nonnegotiable" name="nonnegotiable"><br>
-
-    <label for="notes">Anything else you want your consultant to know?</label>
-    <input type="text" id="notes" name="notes"><br>
-
-    <input type="submit" id="submit" name="submit" value="Submit">
-</form>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                    <label>What dates would work for your trip?</label>
+                    <label for="startdate">Start Date</label>
+                    <input name="startdate" type="date" class="form-control" id="startdate" value="2018-10-03">
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                    <label for="enddate">End Date</label>
+                    <input name="enddate" type="date" class="form-control" id="enddate" value="2018-10-07">
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                    <label for="purpose">What is the purpose of this trip?</label>
+                    <input type="textarea" class="form-control" name="purpose" id="purpose" value="Vacation"><br>
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                    <label for="transportation">How would you like to get there?</label>
+                    <select id="transportation" name="transportation" class="form-control">
+                        <option value="airline" selected="selected">Airline</option>
+                        <option value="personalcar">Personal Car</option>
+                        <option value="rentalcar">Rental Car</option>
+                        <option value="bus">Bus</option>
+                        <option value="train">Train</option>
+                        <option value="boat">Boat</option>
+                    </select>
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
+                    <label for="accommodation">What type of accommodations would you prefer?</label>
+                    <select id="accommodation" name="accommodation" class="form-control">
+                        <option value="hotel" selected="selected">Hotel</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="vacationhome">Vacation Home</option>
+                        <option value="bedandbreakfast">Bed & Breakfast</option>
+                        <option value="hostel">Hostel</option>
+                        <option value="motel">Motel</option>
+                        <option value="guesthouse">Guest House</option>
+                        <option value="villa">Villa</option>
+                        <option value="homestay">Homestay</option>
+                    </select>
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-5">
+                    <label>What kinds of activities are you looking forward to doing?</label><br>
+                    <input type="checkbox" name="activity[]" class="form-control" value="1">Outdoors (e.g. hiking, skiing)
+                    <input type="checkbox" name="activity[]" class="form-control" value="2">Cultural (e.g. museums, art galleries, festivals)
+                    <input type="checkbox" name="activity[]" class="form-control" value="3">Nightlife (e.g. bar hopping, dancing)
+                    <input type="checkbox" name="activity[]" class="form-control" value="4">Sightseeing (e.g. Eiffel Tower, London Eye)
+                    <input type="checkbox" name="activity[]" class="form-control" value="5">Food and Alcohol (e.g. wine tasting, cooking class)
+                    <input type="checkbox" name="activity[]" class="form-control" value="6">Wildlife (e.g. safari, zoo)
+                    <input type="checkbox" name="activity[]" class="form-control" value="7">Entertainment (e.g. concert, play)
+                    <input type="checkbox" name="activity[]" class="form-control" value="8">Educational (e.g. pottery-making workshop)
+                    <input type="checkbox" name="activity[]" class="form-control" value="9">Guided Tour (e.g. walking tour, bus tour)
+                    <input type="checkbox" name="activity[]" class="form-control" value="10">Shopping (pretty self explanatory)
+                    <input type="checkbox" name="activity[]" class="form-control" value="11">Family Friendly (suitable for kids and adults)
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-5">
+                    <label>What are your dining preferences while traveling?</label><br>
+                    <input type="checkbox" name="dining[]" class="form-control" value="1">Casual Restaurants
+                    <input type="checkbox" name="dining[]" class="form-control" value="2">Fast Food
+                    <input type="checkbox" name="dining[]" class="form-control" value="3">Fine Dining
+                    <input type="checkbox" name="dining[]" class="form-control" value="4">Street Food
+                    <input type="checkbox" name="dining[]" class="form-control" value="5">Bakeries
+                    <input type="checkbox" name="dining[]" class="form-control" value="6">Coffee Shops
+                    <input type="checkbox" name="dining[]" class="form-control" value="7">Cooking For Yourself
+                    <input type="checkbox" name="dining[]" class="form-control" value="8">Deliveries
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-5">
+                    <label for="nonnegotiable">Do you have any "must-dos" for this trip? Leave blank if you have none.</label>
+                    <input type="text" id="nonnegotiable" name="nonnegotiable" class="form-control">
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-5">
+                    <label for="notes">Anything else you want your consultant to know?</label>
+                    <input type="text" id="notes" name="notes" class="form-control">
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                    <label for="btnSubmit">&nbsp;</label>
+                    <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <form action="@routes.UserController.getUserProfile" method="GET">
+        @helper.CSRF.formField
+        <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">BAck To Profile</a>
+    </form>
+</div>
 </body>
 </html>

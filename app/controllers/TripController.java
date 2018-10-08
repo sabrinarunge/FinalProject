@@ -165,7 +165,7 @@ public class TripController extends Controller
         int userId = Integer.parseInt(userIdText);
         Logger.debug("userId" + userId);
 
-        String reqTripSQL = "SELECT NEW models.ExistingTrip(rx.userId, r.reqTripId, d.destinationName, rx.startDate, rx.endDate) " +
+        String reqTripSQL = "SELECT NEW models.ExistingTrip(rx.userId, r.reqTripId, d.destinationName, rx.startDate, rx.endDate, rx.tripPurpose) " +
                             "FROM ReqTripDestination r " +
                             "JOIN Destination d ON r.destinationId = d.destinationId " +
                             "JOIN ReqTrip rx ON r.reqTripId = rx.reqTripId " +

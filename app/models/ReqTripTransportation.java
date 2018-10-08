@@ -11,7 +11,6 @@ public class ReqTripTransportation
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int reqTripTransportationId;
     private int reqTripId;
     private int transportationTypeId;
-    private int localTransportationTypeId;
 
     public int getReqTripTransportationId()
     {
@@ -43,13 +42,4 @@ public class ReqTripTransportation
         this.transportationTypeId = transportationTypeId;
     }
 
-    public int getLocalTransportationTypeId()
-    {
-        return localTransportationTypeId;
-    }
-
-    public void setLocalTransportationTypeId(int localTransportationTypeId)
-    {
-        this.localTransportationTypeId = localTransportationTypeId;
-    }
 }
