@@ -1,22 +1,21 @@
 INSERT INTO TransportationType(TransportationTypeId, TransportationTypeName) VALUES
 (1, "Airline"),
 (2, "Rental Car"),
-(3, "Taxi"),
-(4, "Bus"),
+(3, "Personal Car"),
+(4, "Taxi"),
 (5, "Train"),
 (6, "Subway"),
-(7, "Boat");
+(7, "Boat"),
+(8, "Bus");
 
 INSERT INTO AccommodationType(AccommodationTypeId, AccommodationTypeName) VALUES
 (1, "Hotel"),
 (2, "Apartment"),
-(3, "Vacation Home"),
-(4, "Bed and Breakfast"),
-(5, "Hostel"),
-(6, "Motel"),
-(7, "Guesthouse"),
-(8, "Villa"),
-(9, "Homestay");
+(3, "Bed and Breakfast"),
+(4, "Hostel"),
+(5, "Motel"),
+(6, "Villa");
+
 
 INSERT INTO DiningType (DiningTypeId, DiningTypeName) VALUES
 (1, "Casual Restaurant"),
@@ -26,7 +25,7 @@ INSERT INTO DiningType (DiningTypeId, DiningTypeName) VALUES
 (5, "Bakery"),
 (6, "Coffee Shop"),
 (7, "Grocery Store"),
-(8, "Delivery");
+(8, "Delivery Restaurant");
 
 INSERT INTO ActivityType (ActivityTypeId, ActivityTypeName) VALUES
 (1, "Outdoors"),

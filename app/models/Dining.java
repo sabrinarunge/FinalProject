@@ -1,20 +1,26 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Dining
 {
-    @Id private int diningId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int diningId;
     private String diningName;
-    private int destinationId;
+    private String diningInformation;
     private int diningTypeId;
-    private String diningDescription;
 
     public int getDiningId()
     {
         return diningId;
+    }
+
+    public void setDiningId(int diningId)
+    {
+        this.diningId = diningId;
     }
 
     public String getDiningName()
@@ -22,9 +28,19 @@ public class Dining
         return diningName;
     }
 
-    public int getDestinationId()
+    public void setDiningName(String diningName)
     {
-        return destinationId;
+        this.diningName = diningName;
+    }
+
+    public String getDiningInformation()
+    {
+        return diningInformation;
+    }
+
+    public void setDiningInformation(String diningInformation)
+    {
+        this.diningInformation = diningInformation;
     }
 
     public int getDiningTypeId()
@@ -32,8 +48,8 @@ public class Dining
         return diningTypeId;
     }
 
-    public String getDiningDescription()
+    public void setDiningTypeId(int diningTypeId)
     {
-        return diningDescription;
+        this.diningTypeId = diningTypeId;
     }
 }

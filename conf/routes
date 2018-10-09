@@ -12,16 +12,19 @@ POST    /userlogin                  controllers.UserController.postUserLogin
 GET     /userinformation            controllers.UserController.getUserInformation
 POST    /userinformation            controllers.UserController.postUserInformation
 GET     /userprofile                controllers.UserController.getUserProfile
-GET     /journeytemplate            controllers.UserController.getThis
+GET     /viewrecommendations        controllers.UserController.getViewRecommendations
+GET     /userphoto/:userId          controllers.UserController.getUserPhoto(userId:Integer)
 
 GET     /tripinformation            controllers.TripController.getTripInformation
 POST    /tripinformation            controllers.TripController.postTripInformation
-GET     /existingtrips              controllers.TripController.getExistingTrips
+GET     /existingtrips/:reqTripId   controllers.TripController.getExistingTrips(reqTripId:Integer)
 
 GET     /consultantdashboard        controllers.ConsultantController.getConsultantDashboard
 GET     /trip/:reqTripId            controllers.ConsultantController.getTrip(reqTripId:Integer)
 POST    /trip/:reqTripId            controllers.ConsultantController.postTrip(reqTripId:Integer)
 GET     /users                      controllers.ConsultantController.getUsers
+
+GET     /journeytemplate            controllers.UserController.getThis
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count

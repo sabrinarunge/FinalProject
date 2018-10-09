@@ -1,21 +1,27 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
 public class TripAccommodation
 {
-    @Id private int tripAccommodationId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int tripAccommodationId;
     private int accommodationId;
-    private int tripId;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private int reqTripId;
+
 
     public int getTripAccommodationId()
     {
         return tripAccommodationId;
+    }
+
+    public void setTripAccommodationId(int tripAccommodationId)
+    {
+        this.tripAccommodationId = tripAccommodationId;
     }
 
     public int getAccommodationId()
@@ -23,18 +29,18 @@ public class TripAccommodation
         return accommodationId;
     }
 
-    public int getTripId()
+    public void setAccommodationId(int accommodationId)
     {
-        return tripId;
+        this.accommodationId = accommodationId;
     }
 
-    public LocalDate getStartDate()
+    public int getReqTripId()
     {
-        return startDate;
+        return reqTripId;
     }
 
-    public LocalDate getEndDate()
+    public void setReqTripId(int reqTripId)
     {
-        return endDate;
+        this.reqTripId = reqTripId;
     }
 }

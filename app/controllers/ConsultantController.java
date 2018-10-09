@@ -98,6 +98,7 @@ public class ConsultantController extends Controller
 
         PlacesSearchResult[] places = Place.getPlace("kensington, london, rentals");
 
+
 //        for()
 //        {
 //            PlaceDetails details = Place.getPlaceDetails()places[i].placeId);
@@ -156,8 +157,18 @@ public class ConsultantController extends Controller
         DynamicForm form = formFactory.form().bindFromRequest();
         String searchQuery = form.get("searchquery");
 
-        PlacesSearchResult[] places = Place.getPlace(searchQuery);
+        PlacesSearchResult[] places;
+        if(searchQuery != null)
+        {
+            places = Place.getPlace(searchQuery);
+        }
+        else
+        {
+            places = Place.getPlace("Little Rock, AR");
+        }
         session().get("destination");
+
+
 
         /*
         for(int i = 0; i < places.length; i++)
@@ -167,36 +178,184 @@ public class ConsultantController extends Controller
         }
         */
 
-        Accommodation newAccommodation = new Accommodation();
-        String accommodation1 = form.get("accommodation1");
-        String accommodation2 = form.get("accommodation2");
-        String accommodation3 = form.get("accommodation3");
+//        Accommodation newAccommodation = new Accommodation();
+//        TripAccommodation newTripAccommodation = new TripAccommodation();
+//        AccommodationType accommodationType = new AccommodationType();
+//        String accommodation1 = form.get("accommodation1");
+//        String accommodationInfo1 = form.get("accommodationinfo1");
+//        String accommodation2 = form.get("accommodation2");
+//        String accommodationInfo2 = form.get("accommodationinfo2");
+//        String accommodation3 = form.get("accommodation3");
+//        String accommodationInfo3 = form.get("accommodationinfo3");
+//
+//        newAccommodation.setAccommodationName(accommodation1);
+//        newAccommodation.setAccommodationInformation(accommodationInfo1);
+//        String newAccommodationSQL = "SELECT a FROM AccommodationType a WHERE AccommodationTypeName LIKE :accommodationType";
+//
+//        System.out.println("Hello World");
+//        accommodationType.setAccommodationTypeName(accommodationInfo1);
+//        jpaApi.em().persist(accommodationType);
+//
+//        newAccommodation.setAccommodationTypeId(accommodationType.getAccommodationTypeId());
+//        jpaApi.em().persist(newAccommodation);
+//
+//        newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+//        newTripAccommodation.setReqTripId(reqTripId);
+//        jpaApi.em().persist(newTripAccommodation);
+//
+//        accommodationType = new AccommodationType();
+//        newAccommodation = new Accommodation();
+//        newTripAccommodation = new TripAccommodation();
+//
+//        newAccommodation.setAccommodationName(accommodation2);
+//        newAccommodation.setAccommodationInformation(accommodationInfo2);
+//        String newAccommodationSQL = "SELECT a FROM AccommodationType a WHERE AccommodationTypeName LIKE :accommodationType";
+//        try
+//        {
+//            accommodationType = jpaApi.em().createQuery(newAccommodationSQL, AccommodationType.class).setParameter("accommodationType", accommodationInfo2).getSingleResult();
+//        }
+//        catch(Exception e) {
+//            accommodationType.setAccommodationTypeName(accommodationInfo2);
+//            jpaApi.em().persist(accommodationType);
+//        }
+//        newAccommodation.setAccommodationTypeId(accommodationType.getAccommodationTypeId());
+//        jpaApi.em().persist(newAccommodation);
+//        newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+//        newTripAccommodation.setReqTripId(reqTripId);
+//        jpaApi.em().persist(newTripAccommodation);
+//
+//        accommodationType = new AccommodationType();
+//        newAccommodation = new Accommodation();
+//        newTripAccommodation = new TripAccommodation();
+//
+//        newAccommodation.setAccommodationName(accommodation3);
+//        newAccommodation.setAccommodationInformation(accommodationInfo3);
+//        newAccommodationSQL = "SELECT a FROM AccommodationType a WHERE AccommodationTypeName LIKE :accommodationType";
+//        try
+//        {
+//            accommodationType = jpaApi.em().createQuery(newAccommodationSQL, AccommodationType.class).setParameter("accommodationType", accommodationInfo3).getSingleResult();
+//        }
+//        catch(Exception e) {
+//            accommodationType.setAccommodationTypeName(accommodationInfo2);
+//            jpaApi.em().persist(accommodationType);
+//        }
+//        newAccommodation.setAccommodationTypeId(accommodationType.getAccommodationTypeId());
+//        jpaApi.em().persist(newAccommodation);
+//        newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+//        newTripAccommodation.setReqTripId(reqTripId);
+//        jpaApi.em().persist(newTripAccommodation);
+//
+//
+//
+//
+//
+//
 
-        Activity newActivity = new Activity();
-        String activity1 = form.get("activity1");
-        String activity2 = form.get("activity2");
-        String activity3 = form.get("activity3");
-        String activity4 = form.get("activity4");
-        String activity5 = form.get("activity5");
-        String activity6 = form.get("activity6");
-        String activity7 = form.get("activity7");
-        String activity8 = form.get("activity8");
-        String activity9 = form.get("activity9");
-        String activity10 = form.get("activity10");
 
-        Dining newDining = new Dining();
-        String dining1 = form.get("dining1");
-        String dining2 = form.get("dining2");
-        String dining3 = form.get("dining3");
-        String dining4 = form.get("dining4");
-        String dining5 = form.get("dining5");
-        String dining6 = form.get("dining6");
-        String dining7 = form.get("dining7");
-        String dining8 = form.get("dining8");
-        String dining9 = form.get("dining9");
-        String dining10 = form.get("dining10");
+//
+//        Activity newActivity = new Activity();
+//        String activity1 = form.get("activity1");
+//        String activityInfo1 = form.get("activityinfo1");
+//        String activity2 = form.get("activity2");
+//        String activityInfo2 = form.get("activityinfo2");
+//        String activity3 = form.get("activity3");
+//        String activityInfo3 = form.get("activityinfo3");
+//        String activity4 = form.get("activity4");
+//        String activityInfo4 = form.get("activityinfo4");
+//        String activity5 = form.get("activity5");
+//        String activityInfo5 = form.get("activityinfo5");
+//        String activity6 = form.get("activity6");
+//        String activityInfo6 = form.get("activityinfo6");
+//        String activity7 = form.get("activity7");
+//        String activityInfo7 = form.get("activityinfo7");
+//        String activity8 = form.get("activity8");
+//        String activityInfo8 = form.get("activityinfo8");
+//        String activity9 = form.get("activity9");
+//        String activityInfo9 = form.get("activityinfo9");
+//        String activity10 = form.get("activity10");
+//        String activityInfo10 = form.get("activityinfo10");
+//
+//        newActivity.setActivityName(activity1);
+//        newActivity.setActivityInformation(activityInfo1);
+//        newActivity.setActivityName(activity2);
+//        newActivity.setActivityInformation(activityInfo2);
+//        newActivity.setActivityName(activity3);
+//        newActivity.setActivityInformation(activityInfo3);
+//        newActivity.setActivityName(activity4);
+//        newActivity.setActivityInformation(activityInfo4);
+//        newActivity.setActivityName(activity5);
+//        newActivity.setActivityInformation(activityInfo5);
+//        newActivity.setActivityName(activity6);
+//        newActivity.setActivityInformation(activityInfo6);
+//        newActivity.setActivityName(activity7);
+//        newActivity.setActivityInformation(activityInfo7);
+//        newActivity.setActivityName(activity8);
+//        newActivity.setActivityInformation(activityInfo8);
+//        newActivity.setActivityName(activity9);
+//        newActivity.setActivityInformation(activityInfo9);
+//        newActivity.setActivityName(activity10);
+//        newActivity.setActivityInformation(activityInfo10);
+//        jpaApi.em().persist(newActivity);
+//
+//        Dining newDining = new Dining();
+//        String dining1 = form.get("dining1");
+//        String diningInfo1 = form.get("dininginfo1");
+//        String dining2 = form.get("dining2");
+//        String diningInfo2 = form.get("dininginfo2");
+//        String dining3 = form.get("dining3");
+//        String diningInfo3 = form.get("dininginfo3");
+//        String dining4 = form.get("dining4");
+//        String diningInfo4 = form.get("dininginfo4");
+//        String dining5 = form.get("dining5");
+//        String diningInfo5 = form.get("dininginfo5");
+//        String dining6 = form.get("dining6");
+//        String diningInfo6 = form.get("dininginfo6");
+//        String dining7 = form.get("dining7");
+//        String diningInfo7 = form.get("dininginfo7");
+//        String dining8 = form.get("dining8");
+//        String diningInfo8 = form.get("dininginfo8");
+//        String dining9 = form.get("dining9");
+//        String diningInfo9 = form.get("dininginfo9");
+//        String dining10 = form.get("dining10");
+//        String diningInfo10 = form.get("dininginfo10");
+//
+//        newDining.setDiningName(dining1);
+//        newDining.setDiningInformation(diningInfo1);
+//        newDining.setDiningName(dining2);
+//        newDining.setDiningInformation(diningInfo2);
+//        newDining.setDiningName(dining3);
+//        newDining.setDiningInformation(diningInfo3);
+//        newDining.setDiningName(dining4);
+//        newDining.setDiningInformation(diningInfo4);
+//        newDining.setDiningName(dining5);
+//        newDining.setDiningInformation(diningInfo5);
+//        newDining.setDiningName(dining6);
+//        newDining.setDiningInformation(diningInfo6);
+//        newDining.setDiningName(dining7);
+//        newDining.setDiningInformation(diningInfo7);
+//        newDining.setDiningName(dining8);
+//        newDining.setDiningInformation(diningInfo8);
+//        newDining.setDiningName(dining9);
+//        newDining.setDiningInformation(diningInfo9);
+//        newDining.setDiningName(dining10);
+//        newDining.setDiningInformation(diningInfo10);
+//        jpaApi.em().persist(newDining);
+//
+//        Transportation newTransportation = new Transportation();
+//        String transportation = form.get("transportation");
+//        String transportationInfo = form.get("transportationinfo");
+//
+//        newTransportation.setTransportationName(transportation);
+//        newTransportation.setTransportationInformation(transportationInfo);
+//        jpaApi.em().persist(newTransportation);
+//
+//        ReqTrip newReqTrip = new ReqTrip();
+//        String tripDescription = form.get("description");
+//
+//        newReqTrip.setConsultantNotes(tripDescription);
+//        jpaApi.em().persist(newReqTrip);
 
-        Transportation newTransportation = new Transportation();
+
 
         return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, places));
     }

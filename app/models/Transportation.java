@@ -1,19 +1,26 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Transportation
 {
-    @Id private int transportationId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int transportationId;
     private String transportationName;
+    private String transportationInformation;
     private int transportationTypeId;
-    private String transportationDescription;
 
     public int getTransportationId()
     {
         return transportationId;
+    }
+
+    public void setTransportationId(int transportationId)
+    {
+        this.transportationId = transportationId;
     }
 
     public String getTransportationName()
@@ -21,13 +28,28 @@ public class Transportation
         return transportationName;
     }
 
+    public void setTransportationName(String transportationName)
+    {
+        this.transportationName = transportationName;
+    }
+
+    public String getTransportationInformation()
+    {
+        return transportationInformation;
+    }
+
+    public void setTransportationInformation(String transportationInformation)
+    {
+        this.transportationInformation = transportationInformation;
+    }
+
     public int getTransportationTypeId()
     {
         return transportationTypeId;
     }
 
-    public String getTransportationDescription()
+    public void setTransportationTypeId(int transportationTypeId)
     {
-        return transportationDescription;
+        this.transportationTypeId = transportationTypeId;
     }
 }

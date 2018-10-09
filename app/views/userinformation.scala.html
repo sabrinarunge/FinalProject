@@ -22,11 +22,12 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+        <div class="col-3"></div>
+        <div class="col-6">
             <div class="card" style="width: 2 rem;">
                 <div class="card-body">
                     <h3 class="card-title">Update Information</h3>
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         @helper.CSRF.formField
                         <label for="emailaddress">Email Address</label>
                         <input type="text" class="card-text" id="emailaddress" name="emailaddress" value="@user.getEmailAddress"><br>
@@ -42,7 +43,11 @@
                         <input type="number" class="card-text" id="zipcode" name="zipcode" value="@user.getZipCode"><br>
                         <label for="birthdate">Birthday: </label>
                         <input type="date" class="card-text" id="birthdate" name="birthdate" value="@user.getBirthDate"><br>
-                        <input type="submit" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight" id="submit" name="submit" value="Submit">
+                        <label for="photo">Add a profile photo?</label>
+                        <input type="file" name="photo" id="photo"><br>
+                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="submit" name="submit">Save</button><br>
+                        </div>
                     </form>
                     <form action="@routes.UserController.getUserProfile" method="GET">
                         @helper.CSRF.formField
@@ -53,7 +58,6 @@
         </div>
     </div>
 </div>
-
-
+</form>
 </body>
 </html>

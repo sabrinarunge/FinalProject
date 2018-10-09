@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-3">
             <div class="card" style="width: 2 rem;">
-                <img class="card-img-top" src="../assets/images/profilephoto.jpg" height="500">
+               <img src="/userphoto/@user.getUserId" height="500">
                 <div class="card-body">
                     <h3 class="card-title">@user.getFirstName @user.getLastName</h3>
                     <p class="card-text">Email Address: @user.getEmailAddress</p>
@@ -44,11 +44,10 @@
         <div class="col-9">
             <div class="card" style="width: 2 rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Trip Requests</h5>
+                    <h5 class="card-title">Trips</h5>
                     <table class="card-text table">
                         <tr>
                             <th>Trip Purpose</th>
-                            <th>Requested Trip ID</th>
                             <th>Destination</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -57,7 +56,6 @@
                         @for(existingTrip <- existingTrips) {
                         <tr>
                             <td><a href="/existingtrips/@existingTrip.getReqTripId">@existingTrip.getTripPurpose</a></td>
-                            <td>@existingTrip.getReqTripId</td>
                             <td>@existingTrip.getDestinationName</td>
                             <td>@existingTrip.getStartDate</td>
                             <td>@existingTrip.getEndDate</td>
@@ -68,30 +66,6 @@
                         @helper.CSRF.formField
                         <a href="@routes.TripController.getTripInformation" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Add New Trip</a>
                     </form>
-                </div>
-            </div>
-            <div class="card" style="width: 2 rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Your Recommendations</h5>
-                    <table class="card-text table">
-                        <tr>
-                            <th>Trip Purpose</th>
-                            <th>Requested Trip ID</th>
-                            <th>Destination</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-
-                        </tr>
-                        @for(existingTrip <- existingTrips) {
-                        <tr>
-                            <td>Filler</td>
-                            <td>Filler</td>
-                            <td>Filler</td>
-                            <td>Filler</td>
-                            <td>Filler</td>
-                        </tr>
-                        }
-                    </table>
                 </div>
             </div>
         </div>

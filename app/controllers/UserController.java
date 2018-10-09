@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.common.io.Files;
 import models.ExistingTrip;
 import models.Restriction;
 import models.User;
@@ -10,10 +11,12 @@ import play.data.FormFactory;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import services.HashHelper;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -42,7 +45,7 @@ public class UserController extends Controller
         DynamicForm form = formFactory.form().bindFromRequest();
 
         User newUser = new User();
-        int userId = newUser.getUserId();
+
         String email = form.get("email");
         String password = form.get("password");
         String firstName = form.get("firstname");
@@ -59,6 +62,8 @@ public class UserController extends Controller
         newUser.setBirthDate(birthDate);
         newUser.setRestriction(restriction);
         jpaApi.em().persist(newUser);
+
+        int userId = newUser.getUserId();
 
         /*
         String emailSQL = "SELECT u FROM User u WHERE u.EmailAddress = :email";
@@ -117,6 +122,26 @@ public class UserController extends Controller
         String lastName = form.get("lastname");
         String zipCode = form.get("zipcode");
         LocalDate birthDate = LocalDate.parse(form.get("birthdate"));
+        byte[] savePhoto;
+
+        Http.MultipartFormData<File> formData = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart<File> filePart = formData.getFile("photo");
+        File file = filePart.getFile();
+
+        try
+        {
+            savePhoto = Files.toByteArray(file);
+            if(savePhoto != null && savePhoto.length > 0)
+            {
+                user.setPhoto(savePhoto);
+            }
+
+        }
+
+        catch (Exception e)
+        {
+            savePhoto = null;
+        }
 
         user.setEmailAddress(emailAddress);
 
@@ -129,11 +154,21 @@ public class UserController extends Controller
         user.setLastName(lastName);
         user.setZipCode(zipCode);
         user.setBirthDate(birthDate);
+
         jpaApi.em().persist(user);
 
         session().put("firstName", firstName);
 
         return redirect("/userprofile");
+    }
+
+    @Transactional
+    public Result getUserPhoto(int userId)
+    {
+        String sql = "SELECT u FROM User u WHERE userId = :userId";
+        User user = jpaApi.em().createQuery(sql, User.class).setParameter("userId", userId).getSingleResult();
+
+        return ok(user.getPhoto()).as("image/jpg");
     }
 
     @Transactional
@@ -210,6 +245,12 @@ public class UserController extends Controller
     public Result getThis()
     {
         return ok(views.html.journeytemplate.render());
+    }
+
+    @Transactional
+    public Result getViewRecommendations()
+    {
+        return ok(views.html.viewrecommendations.render());
     }
 
 }

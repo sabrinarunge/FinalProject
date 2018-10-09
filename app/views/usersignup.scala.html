@@ -19,34 +19,44 @@
     <title>Create An Account</title>
 </head>
 <body>
-<h1>Create An Account</h1>
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                        <div class="card" style="width: 8 rem;">
+                                <div class="card-body">
+                                        <h3>Create An Account</h3>
+                                        <p>Welcome to Tripify, the travel planning app! Please fill out this form to create an account.</p>
+                                        <form method="POST">
+                                                @helper.CSRF.formField
+                                                <label for="email">Email</label>
+                                                <input type="text" placeholder="Enter Email" name="email" id="email"><br>
 
-<p>Welcome to Tripify, the travel planning app! Please fill out this form to create an account.</p>
+                                                <label for="password">Password</label>
+                                                <input type="password" placeholder="Enter Password" name="password" id="password"><br>
 
-<form method="POST">
-        @helper.CSRF.formField
-        <label for="email">Email</label>
-        <input type="text" placeholder="Enter Email" name="email" id="email"><br>
+                                                <label for="firstname">First Name: </label>
+                                                <input type="text" id="firstname" name="firstname"><br>
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Enter Password" name="password" id="password"><br>
+                                                <label for="lastname">Last Name: </label>
+                                                <input type="text" id="lastname" name="lastname"><br>
 
-        <label for="firstname">First Name: </label>
-        <input type="text" id="firstname" name="firstname"><br>
+                                                <label for="zipcode">Zip Code: </label>
+                                                <input type="number" id="zipcode" name="zipcode"><br>
 
-        <label for="lastname">Last Name: </label>
-        <input type="text" id="lastname" name="lastname"><br>
+                                                <label for="birthdate">Birthday: </label>
+                                                <input type="date" id="birthdate" name="birthdate"><br>
 
-        <label for="zipcode">Zip Code: </label>
-        <input type="number" id="zipcode" name="zipcode"><br>
-
-        <label for="birthdate">Birthday: </label>
-        <input type="date" id="birthdate" name="birthdate"><br>
-
-        <label for="restriction">Do you have any travel restrictions? (e.g. allergies, disabilities)</label>
-        <input type="text" id="restriction" name="restriction"><br>
-
-        <input type="submit" id="signup" name="signup" value="Sign Up"><br>
-</form>
+                                                <label for="restriction">Do you have any travel restrictions? (e.g. allergies, disabilities)</label>
+                                                <input type="text" id="restriction" name="restriction"><br>
+                                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="signup" name="signup">Sign Up</button>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
 </body>
 </html>

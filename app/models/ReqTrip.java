@@ -19,6 +19,7 @@ public class ReqTrip
     private String tripPurpose;
     private String nonNegotiable;
     private String notes;
+    private String consultantNotes;
 
     public int getReqTripId()
     {
@@ -122,5 +123,15 @@ public class ReqTrip
     public void setNonNegotiable(String nonNegotiable)
     {
         this.nonNegotiable = nonNegotiable;
+    }
+
+    public String getConsultantNotes()
+    {
+        return consultantNotes;
+    }
+
+    public void setConsultantNotes(String consultantNotes)
+    {
+        this.consultantNotes = consultantNotes;
     }
 }

@@ -10,7 +10,7 @@ public class Destination
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int destinationId;
     private String destinationName;
-    private String destinationDescription;
+    private String destinationInformation;
 
     public int getDestinationId()
     {
@@ -22,9 +22,9 @@ public class Destination
         return destinationName;
     }
 
-    public String getDestinationDescription()
+    public String getDestinationInformation()
     {
-        return destinationDescription;
+        return destinationInformation;
     }
 
     public void setDestinationId(int destinationId)
@@ -37,8 +37,8 @@ public class Destination
         this.destinationName = destinationName;
     }
 
-    public void setDestinationDescription(String destinationDescription)
+    public void setDestinationInformation(String destinationInformation)
     {
-        this.destinationDescription = destinationDescription;
+        this.destinationInformation = destinationInformation;
     }
 }

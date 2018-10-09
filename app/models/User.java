@@ -19,6 +19,7 @@ public class User
     private String emailAddress;
     private LocalDate birthDate;
     private String restriction;
+    private byte[] photo;
 
     public int getUserId()
     {
@@ -98,5 +99,15 @@ public class User
     public void setRestriction(String restriction)
     {
         this.restriction = restriction;
+    }
+
+    public byte[] getPhoto()
+    {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo)
+    {
+        this.photo = photo;
     }
 }
