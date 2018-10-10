@@ -203,33 +203,42 @@ public class ConsultantController extends Controller
             String accommodation3 = form.get("accommodation3");
             String accommodationInfo3 = form.get("accommodationinfo3");
 
-            newAccommodation.setAccommodationName(accommodation1);
-            newAccommodation.setAccommodationInformation(accommodationInfo1);
-            jpaApi.em().persist(newAccommodation);
+            if(accommodation1.length() > 0 || accommodationInfo1.length() > 0)
+            {
+                newAccommodation.setAccommodationName(accommodation1);
+                newAccommodation.setAccommodationInformation(accommodationInfo1);
+                jpaApi.em().persist(newAccommodation);
 
-            newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
-            newTripAccommodation.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripAccommodation);
+                newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+                newTripAccommodation.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripAccommodation);
+            }
 
-            newAccommodation = new Accommodation();
-            newTripAccommodation = new TripAccommodation();
-            newAccommodation.setAccommodationName(accommodation2);
-            newAccommodation.setAccommodationInformation(accommodationInfo2);
-            jpaApi.em().persist(newAccommodation);
+            if(accommodation2.length() > 0 || accommodationInfo2.length() > 0)
+            {
+                newAccommodation = new Accommodation();
+                newTripAccommodation = new TripAccommodation();
+                newAccommodation.setAccommodationName(accommodation2);
+                newAccommodation.setAccommodationInformation(accommodationInfo2);
+                jpaApi.em().persist(newAccommodation);
 
-            newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
-            newTripAccommodation.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripAccommodation);
+                newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+                newTripAccommodation.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripAccommodation);
+            }
 
-            newAccommodation = new Accommodation();
-            newTripAccommodation = new TripAccommodation();
-            newAccommodation.setAccommodationName(accommodation3);
-            newAccommodation.setAccommodationInformation(accommodationInfo3);
-            jpaApi.em().persist(newAccommodation);
+            if(accommodation3.length() > 0 || accommodationInfo3.length() > 0)
+            {
+                newAccommodation = new Accommodation();
+                newTripAccommodation = new TripAccommodation();
+                newAccommodation.setAccommodationName(accommodation3);
+                newAccommodation.setAccommodationInformation(accommodationInfo3);
+                jpaApi.em().persist(newAccommodation);
 
-            newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
-            newTripAccommodation.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripAccommodation);
+                newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+                newTripAccommodation.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripAccommodation);
+            }
 
             Activity newActivity = new Activity();
             TripActivity newTripActivity = new TripActivity();
@@ -255,103 +264,133 @@ public class ConsultantController extends Controller
             String activity10 = form.get("activity10");
             String activityInfo10 = form.get("activityinfo10");
 
-            newActivity.setActivityName(activity1);
-            newActivity.setActivityInformation(activityInfo1);
-            jpaApi.em().persist(newActivity);
+            if(activity1.length() > 0 || activityInfo1.length() > 0)
+            {
+                newActivity.setActivityName(activity1);
+                newActivity.setActivityInformation(activityInfo1);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity2);
-            newActivity.setActivityInformation(activityInfo2);
-            jpaApi.em().persist(newActivity);
+            if(activity2.length() > 0 || activityInfo2.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity2);
+                newActivity.setActivityInformation(activityInfo2);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity3);
-            newActivity.setActivityInformation(activityInfo3);
-            jpaApi.em().persist(newActivity);
+            if(activity3.length() > 0 || activityInfo3.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity3);
+                newActivity.setActivityInformation(activityInfo3);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity4);
-            newActivity.setActivityInformation(activityInfo4);
-            jpaApi.em().persist(newActivity);
+            if(activity4.length() > 0 || activityInfo4.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity4);
+                newActivity.setActivityInformation(activityInfo4);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity5);
-            newActivity.setActivityInformation(activityInfo5);
-            jpaApi.em().persist(newActivity);
+            if(activity5.length() > 0 || activityInfo5.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity5);
+                newActivity.setActivityInformation(activityInfo5);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity6);
-            newActivity.setActivityInformation(activityInfo6);
-            jpaApi.em().persist(newActivity);
+            if(activity6.length() > 0 || activityInfo6.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity6);
+                newActivity.setActivityInformation(activityInfo6);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity7);
-            newActivity.setActivityInformation(activityInfo7);
-            jpaApi.em().persist(newActivity);
+            if(activity7.length() > 0 || activityInfo7.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity7);
+                newActivity.setActivityInformation(activityInfo7);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity8);
-            newActivity.setActivityInformation(activityInfo8);
-            jpaApi.em().persist(newActivity);
+            if(activity8.length() > 0 || activityInfo8.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity8);
+                newActivity.setActivityInformation(activityInfo8);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity9);
-            newActivity.setActivityInformation(activityInfo9);
-            jpaApi.em().persist(newActivity);
+            if(activity9.length() > 0 || activityInfo9.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity9);
+                newActivity.setActivityInformation(activityInfo9);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
-            newActivity = new Activity();
-            newTripActivity = new TripActivity();
-            newActivity.setActivityName(activity10);
-            newActivity.setActivityInformation(activityInfo10);
-            jpaApi.em().persist(newActivity);
+            if(activity10.length() > 0 || activityInfo10.length() > 0)
+            {
+                newActivity = new Activity();
+                newTripActivity = new TripActivity();
+                newActivity.setActivityName(activity10);
+                newActivity.setActivityInformation(activityInfo10);
+                jpaApi.em().persist(newActivity);
 
-            newTripActivity.setActivityId(newActivity.getActivityId());
-            newTripActivity.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripActivity);
+                newTripActivity.setActivityId(newActivity.getActivityId());
+                newTripActivity.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripActivity);
+            }
 
             Dining newDining = new Dining();
             TripDining newTripDining = new TripDining();
@@ -377,103 +416,134 @@ public class ConsultantController extends Controller
             String dining10 = form.get("dining10");
             String diningInfo10 = form.get("dininginfo10");
 
-            newDining.setDiningName(dining1);
-            newDining.setDiningInformation(diningInfo1);
-            jpaApi.em().persist(newDining);
+            if(dining1.length() > 0 || diningInfo1.length() > 0)
+            {
+                newDining.setDiningName(dining1);
+                newDining.setDiningInformation(diningInfo1);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining2);
-            newDining.setDiningInformation(diningInfo2);
-            jpaApi.em().persist(newDining);
+            if(dining2.length() > 0 || diningInfo2.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining2);
+                newDining.setDiningInformation(diningInfo2);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining3);
-            newDining.setDiningInformation(diningInfo3);
-            jpaApi.em().persist(newDining);
+            if(dining3.length() > 0 || diningInfo3.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining3);
+                newDining.setDiningInformation(diningInfo3);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining4);
-            newDining.setDiningInformation(diningInfo4);
-            jpaApi.em().persist(newDining);
+            if(dining4.length() > 0 || diningInfo4.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining4);
+                newDining.setDiningInformation(diningInfo4);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining5);
-            newDining.setDiningInformation(diningInfo5);
-            jpaApi.em().persist(newDining);
+            if(dining5.length() > 0 || diningInfo5.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining5);
+                newDining.setDiningInformation(diningInfo5);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining6);
-            newDining.setDiningInformation(diningInfo6);
-            jpaApi.em().persist(newDining);
+            if(dining6.length() > 0 || diningInfo6.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining6);
+                newDining.setDiningInformation(diningInfo6);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining7);
-            newDining.setDiningInformation(diningInfo7);
-            jpaApi.em().persist(newDining);
+            if(dining7.length() > 0 || diningInfo7.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining7);
+                newDining.setDiningInformation(diningInfo7);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining8);
-            newDining.setDiningInformation(diningInfo8);
-            jpaApi.em().persist(newDining);
+            if(dining8.length() > 0 || diningInfo8.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining8);
+                newDining.setDiningInformation(diningInfo8);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining9);
-            newDining.setDiningInformation(diningInfo9);
-            jpaApi.em().persist(newDining);
+            if(dining9.length() > 0 || diningInfo9.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining9);
+                newDining.setDiningInformation(diningInfo9);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
 
-            newDining = new Dining();
-            newTripDining = new TripDining();
-            newDining.setDiningName(dining10);
-            newDining.setDiningInformation(diningInfo10);
-            jpaApi.em().persist(newDining);
+            if(dining10.length() > 0 || diningInfo10.length() > 0)
+            {
+                newDining = new Dining();
+                newTripDining = new TripDining();
+                newDining.setDiningName(dining10);
+                newDining.setDiningInformation(diningInfo10);
+                jpaApi.em().persist(newDining);
 
-            newTripDining.setDiningId(newDining.getDiningId());
-            newTripDining.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripDining);
+                newTripDining.setDiningId(newDining.getDiningId());
+                newTripDining.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripDining);
+            }
+
 
             Transportation newTransportation = new Transportation();
             TripTransportation newTripTransportation = new TripTransportation();
@@ -485,41 +555,54 @@ public class ConsultantController extends Controller
             String transportation3 = form.get("transportation3");
             String transportationInfo3 = form.get("transportationinfo3");
 
-            newTransportation.setTransportationName(transportation1);
-            newTransportation.setTransportationInformation(transportationInfo1);
-            jpaApi.em().persist(newTransportation);
+            if(transportation1.length() > 0 || transportationInfo1.length() > 0)
+            {
+                newTransportation.setTransportationName(transportation1);
+                newTransportation.setTransportationInformation(transportationInfo1);
+                jpaApi.em().persist(newTransportation);
 
-            newTripTransportation.setTransportationId(newTransportation.getTransportationId());
-            newTripTransportation.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripTransportation);
+                newTripTransportation.setTransportationId(newTransportation.getTransportationId());
+                newTripTransportation.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripTransportation);
+            }
 
-            newTransportation = new Transportation();
-            newTripTransportation = new TripTransportation();
-            newTransportation.setTransportationName(transportation2);
-            newTransportation.setTransportationInformation(transportationInfo2);
-            jpaApi.em().persist(newTransportation);
+            if(transportation2.length() > 0 || transportationInfo2.length() > 0)
+            {
+                newTransportation = new Transportation();
+                newTripTransportation = new TripTransportation();
+                newTransportation.setTransportationName(transportation2);
+                newTransportation.setTransportationInformation(transportationInfo2);
+                jpaApi.em().persist(newTransportation);
 
-            newTripTransportation.setTransportationId(newTransportation.getTransportationId());
-            newTripTransportation.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripTransportation);
+                newTripTransportation.setTransportationId(newTransportation.getTransportationId());
+                newTripTransportation.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripTransportation);
+            }
 
-            newTransportation = new Transportation();
-            newTripTransportation = new TripTransportation();
-            newTransportation.setTransportationName(transportation3);
-            newTransportation.setTransportationInformation(transportationInfo3);
-            jpaApi.em().persist(newTransportation);
+            if(transportation3.length() > 0 || transportationInfo3.length() > 0)
+            {
+                newTransportation = new Transportation();
+                newTripTransportation = new TripTransportation();
+                newTransportation.setTransportationName(transportation3);
+                newTransportation.setTransportationInformation(transportationInfo3);
+                jpaApi.em().persist(newTransportation);
 
-            newTripTransportation.setTransportationId(newTransportation.getTransportationId());
-            newTripTransportation.setReqTripId(reqTripId);
-            jpaApi.em().persist(newTripTransportation);
+                newTripTransportation.setTransportationId(newTransportation.getTransportationId());
+                newTripTransportation.setReqTripId(reqTripId);
+                jpaApi.em().persist(newTripTransportation);
+            }
+
 
             String descriptionSQL = "SELECT r FROM ReqTrip r WHERE reqtripId = :reqTripId";
             ReqTrip newReqTrip = jpaApi.em().createQuery(descriptionSQL, ReqTrip.class).setParameter("reqTripId", reqTripId).getSingleResult();
             newReqTrip.getBudget();
             String tripDescription = form.get("description");
 
-            newReqTrip.setConsultantNotes(tripDescription);
-            jpaApi.em().persist(newReqTrip);
+            if(tripDescription.length() > 0)
+            {
+                newReqTrip.setConsultantNotes(tripDescription);
+                jpaApi.em().persist(newReqTrip);
+            }
         }
 
         return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, placesDetails));
