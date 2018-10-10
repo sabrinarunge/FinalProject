@@ -20,11 +20,11 @@
 
     <title>Consultant Dashboard</title>
 </head>
-<body>
+<body style="background-image:url(/assets/images/birchtreecircle.jpg)">
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="card" style="width: 8 rem;">
+            <div class="card" style="width: 8 rem; margin-top: 30px;">
                 <div class="card-body">
                     <h5 class="card-title">Consultant Dashboard</h5>
                     <table class="card-text table">
@@ -39,7 +39,7 @@
                         @for(submittedTrip <- submittedTrips) {
                         <tr>
                             <td>@submittedTrip.getReqTripId</td>
-                            <td><a href="/trip/@submittedTrip.getReqTripId">@submittedTrip.getTripPurpose</a></td>
+                            <td><a href="/trip/@submittedTrip.getReqTripId" style="color:#819FF7">@submittedTrip.getTripPurpose</a></td>
                             <td>@submittedTrip.getFirstName</td>
                             <td>@submittedTrip.getLastName</td>
                             <td>@submittedTrip.getStartDate</td>

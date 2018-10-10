@@ -19,7 +19,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>User Information</title>
 </head>
-<body>
+<body style="background-image:url(/assets/images/mountains.jpg)">
 <div class="container-fluid">
     <div class="row">
         <div class="col-3"></div>
@@ -44,14 +44,14 @@
                         <label for="birthdate">Birthday: </label>
                         <input type="date" class="card-text" id="birthdate" name="birthdate" value="@user.getBirthDate"><br>
                         <label for="photo">Add a profile photo?</label>
-                        <input type="file" name="photo" id="photo"><br>
+                        <input type="file" name="photo" id="photo" class="btn"><br>
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="submit" name="submit">Save</button><br>
+                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="submit" name="submit" style="background-color:#819FF7;">Save</button><br>
                         </div>
                     </form>
                     <form action="@routes.UserController.getUserProfile" method="GET">
                         @helper.CSRF.formField
-                        <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back To Profile</a>
+                        <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Back To Profile</a>
                     </form>
                 </div>
             </div>

@@ -20,11 +20,11 @@
 
     <title>Trip</title>
 </head>
-<body>
+<body style="background-image:url(/assets/images/cloudysky.jpg)">
 <div class="container-fluid">
 <div class="row">
     <div class="col-6">
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">User</h5>
                 <table class="card-text table">
@@ -48,7 +48,7 @@
                 </table>
             </div>
         </div>
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Trip</h5>
                 <table class="card-text table">
@@ -77,7 +77,7 @@
                 </table>
             </div>
         </div>
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Destination</h5>
                 <table class="card-text table">
@@ -89,7 +89,7 @@
                 </table>
             </div>
         </div>
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Accommodation</h5>
                 <table class="card-text table">
@@ -101,7 +101,7 @@
                 </table>
             </div>
         </div>
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Activities</h5>
                 <table class="card-text table">
@@ -113,7 +113,7 @@
                 </table>
             </div>
         </div>
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Dining</h5>
                 <table class="card-text table">
@@ -125,7 +125,7 @@
                 </table>
             </div>
         </div>
-        <div class="card" style="width: 2 rem;">
+        <div class="card" style="width: 2 rem; margin-top: 10px; margin-bottom: 10px">
             <div class="card-body">
                 <h5 class="card-title">Transportation</h5>
                 <table class="card-text table">
@@ -137,11 +137,18 @@
                 </table>
             </div>
         </div>
+        <div class="form-group">
+            <form method="POST">
+                @helper.CSRF.formField
+                <input type="text" style="background-color:#FFFFFF" class="form-control" name="searchquery" id="searchquery" placeholder="Search for a destination...">
+                <input type="submit" class="form-control" name="submit" id="submit" value="Submit">
+            </form>
+        </div>
     </div>
     <div class="col-6">
         <form method="POST">
             @helper.CSRF.formField
-            <div class="card" style="width: 2 rem;">
+            <div class="card" style="width: 2 rem; margin-top: 10px;">
                 <div class="card-body">
                     <h5 class="card-title">Create Recommendations</h5>
                     <label for="accommodation1">Accommodation Name</label>
@@ -156,6 +163,13 @@
                     <input type="text" class="card-text" name="accommodation3" id="accommodation3">
                     <label for="accommodationinfo3">Information</label>
                     <input type="text" class="card-text" name="accommodationinfo3" id="accommodationinfo3"><br>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation1" name="createrecommendation1">Add To Recommendation</button><br>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <label for="activity1">Activity Name</label>
                     <input type="text" class="card-text" name="activity1" id="activity1">
                     <label for="activityinfo1">Information</label>
@@ -196,6 +210,13 @@
                     <input type="text" class="card-text" name="activity10" id="activity10">
                     <label for="activityinfo10">Information</label>
                     <input type="text" class="card-text" name="activityinfo10" id="activityinfo10"><br>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation2" name="createrecommendation2">Add To Recommendation</button><br>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <label for="dining1">Dining Name</label>
                     <input type="text" class="card-text" name="dining1" id="dining1">
                     <label for="dininginfo1">Information</label>
@@ -236,6 +257,13 @@
                     <input type="text" class="card-text" name="dining10" id="dining10">
                     <label for="dininginfo10">Information</label>
                     <input type="text" class="card-text" name="dininginfo10" id="dininginfo10"><br>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation3" name="createrecommendation3">Add To Recommendation</button><br>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <label for="transportation1">Transportation Name</label>
                     <input type="text" class="card-text" name="transportation1" id="transportation1">
                     <label for="transportationinfo1">Information</label>
@@ -251,31 +279,27 @@
                     <label for="description">Trip Description</label>
                     <input type="text-area" class="card-text" name="description" id="description"><br>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation" name="createrecommendation">Create Recommendation</button><br>
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation4" name="createrecommendation4">Add To Recommendation</button><br>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-6"></div>
-    <div class="col-6">
-        <div class="form-group">
-            <form method="POST">
+        <div style="text-align: right;">
+            <form action="@routes.ConsultantController.getConsultantDashboard" method="GET">
                 @helper.CSRF.formField
-                <input type="text" class="form-control" name="searchquery" id="searchquery">
-                <input type="submit" class="form-control" name="submit" id="submit" value="Submit">
+                <a href="@routes.ConsultantController.getConsultantDashboard" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back to Dashboard</a>
             </form>
         </div>
     </div>
 </div>
 
-<form action="@routes.ConsultantController.getConsultantDashboard" method="GET">
-    @helper.CSRF.formField
-    <a href="@routes.ConsultantController.getConsultantDashboard" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back to Dashboard</a>
-</form>
+<div class="row">
+    <div class="col-6">
+
+    </div>
+</div>
+
+
 
 <div id="map"></div>
     <script type="text/javascript">

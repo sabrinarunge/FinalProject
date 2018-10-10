@@ -19,10 +19,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>Existing Trips</title>
 </head>
-<body>
+<body style="background-image:url(/assets/images/beach1.jpg)">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-6">
+        <div class="col-7">
             <div class="card" style="width: 2 rem;">
                 <div class="card-body">
                     <h3 class="card-title">Your Trip Submission </h3>
@@ -99,10 +99,10 @@
                     <img src="img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
                     <div class="tm-recommended-description-box">
                         <h3 class="tm-recommended-title">Insert Some Activity</h3>
-                        <p class="tm-text-highlight">Singapore</p>
+                        <p class="tm-text-highlight" style="color:#819FF7">Singapore</p>
                         <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
                     </div>
-                    <a href="#" class="tm-recommended-price-box">
+                    <a href="#" class="tm-recommended-price-box" style="background-color:#A4A4A4">
                         <p class="tm-recommended-price">$440</p>
                         <p class="tm-recommended-price-link">Continue Reading</p>
                     </a>
@@ -113,10 +113,10 @@
                     <img src="img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
                     <div class="tm-recommended-description-box">
                         <h3 class="tm-recommended-title">Insert Some Dining</h3>
-                        <p class="tm-text-highlight">Singapore</p>
+                        <p class="tm-text-highlight" style="color:#819FF7">Singapore</p>
                         <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
                     </div>
-                    <a href="#" class="tm-recommended-price-box">
+                    <a href="#" class="tm-recommended-price-box" style="background-color:#A4A4A4">
                         <p class="tm-recommended-price">$440</p>
                         <p class="tm-recommended-price-link">Continue Reading</p>
                     </a>
@@ -127,17 +127,17 @@
                     <img src="img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
                     <div class="tm-recommended-description-box">
                         <h3 class="tm-recommended-title">Insert Some Hotel</h3>
-                        <p class="tm-text-highlight">Singapore</p>
+                        <p class="tm-text-highlight" style="color:#819FF7">Singapore</p>
                         <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
                     </div>
-                    <a href="#" class="tm-recommended-price-box">
+                    <a href="#" class="tm-recommended-price-box" style="background-color:#A4A4A4">
                         <p class="tm-recommended-price">$440</p>
                         <p class="tm-recommended-price-link">Continue Reading</p>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-5">
             <div class="card" style="width: 2 rem;">
                 <div class="card-body">
                     <h3 class="card-title">Your Recommendations </h3>
@@ -200,7 +200,8 @@
 </div>
 <form action="@routes.UserController.getUserProfile" method="GET">
     @helper.CSRF.formField
-    <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back to Profile</a>
+    <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Back to Profile</a>
 </form>
+</div>
 </body>
 </html>

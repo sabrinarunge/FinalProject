@@ -19,12 +19,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>User Profile</title>
 </head>
-<body>
+<body style="background-image:url(/assets/images/new-york.jpg)">
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
             <div class="card" style="width: 2 rem;">
-               <img src="/userphoto/@user.getUserId">
+               <img src="/userphoto/@user.getUserId" height="500">
                 <div class="card-body">
                     <h3 class="card-title">@user.getFirstName @user.getLastName</h3>
                     <p class="card-text">Email Address: @user.getEmailAddress</p>
@@ -32,11 +32,11 @@
                     <p class="card-text">Zip Code: @user.getZipCode</p>
                     <form action="@routes.UserController.getUserInformation" method="GET">
                         @helper.CSRF.formField
-                        <a href="@routes.UserController.getUserInformation" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Update Information</a>
+                        <a href="@routes.UserController.getUserInformation" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Update Information</a>
                     </form>
                     <form action="@routes.UserController.getUserLogin" method="GET">
                         @helper.CSRF.formField
-                        <a href="@routes.UserController.getUserLogin" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Log Out</a>
+                        <a href="@routes.UserController.getUserLogin" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Log Out</a>
                     </form>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         </tr>
                         @for(existingTrip <- existingTrips) {
                         <tr>
-                            <td><a href="/existingtrips/@existingTrip.getReqTripId">@existingTrip.getTripPurpose</a></td>
+                            <td><a href="/existingtrips/@existingTrip.getReqTripId" style="color:#819FF7">@existingTrip.getTripPurpose</a></td>
                             <td>@existingTrip.getDestinationName</td>
                             <td>@existingTrip.getStartDate</td>
                             <td>@existingTrip.getEndDate</td>
@@ -64,7 +64,7 @@
                     </table>
                     <form action="@routes.TripController.getTripInformation" method="GET">
                         @helper.CSRF.formField
-                        <a href="@routes.TripController.getTripInformation" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Add New Trip</a>
+                        <a href="@routes.TripController.getTripInformation" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Add New Trip</a>
                     </form>
                 </div>
             </div>

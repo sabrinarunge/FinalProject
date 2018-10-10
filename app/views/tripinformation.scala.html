@@ -20,7 +20,7 @@
 
     <title>Trip Information</title>
 </head>
-<body>
+<body style="background-image:url(/assets/images/globe.jpg)">
 <div class="container-fluid">
     <div class="row tm-banner-row" id="tm-section-search">
         <form method="POST" class="tm-search-form tm-section-pad-2">
@@ -54,8 +54,8 @@
                     </div>
                     <div class="form-group">
                         <label>Will any pets be accompanying you?</label>
-                        <input type="radio" name="pets" class="form-control" value="yes">Yes
-                        <input type="radio" name="pets" class="form-control" value="no">No
+                        <input type="radio" name="pets" class="form-control form-check-input" value="yes">Yes<br>
+                        <input type="radio" name="pets" class="form-control form-check-input" value="no">No
                     </div>
                 </div>
             </div>
@@ -95,30 +95,30 @@
                         <div class="col-6">
                             <div class="form-group form-check">
                                 <label>What kinds of activities are you looking forward to doing?</label><br>
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="1">Outdoors (e.g. hiking, skiing)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="2">Cultural (e.g. museums, art galleries, festivals)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="3">Nightlife (e.g. bar hopping, dancing)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="4">Sightseeing (e.g. Eiffel Tower, London Eye)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="5">Food and Alcohol (e.g. wine tasting, cooking class)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="6">Wildlife (e.g. safari, zoo)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="7">Entertainment (e.g. concert, play)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="8">Educational (e.g. pottery-making workshop)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="9">Guided Tour (e.g. walking tour, bus tour)
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="10">Shopping (pretty self explanatory)<
-                                <input type="checkbox" name="activity[]" class="form-control form-check" value="11">Family Friendly (suitable for kids and adults)
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="1">Outdoors<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="2">Cultural<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="3">Nightlife<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="4">Sightseeing<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="5">Food & Alcohol<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="6">Wildlife<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="7">Entertainment<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="8">Educational<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="9">Guided Tours<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="10">Shopping<br>
+                                <input type="checkbox" name="activity[]" class="form-control form-check-input" value="11">Family Friendly<br>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>What are your dining preferences while traveling?</label><br>
-                                <input type="checkbox" name="dining[]" class="form-control" value="1">Casual Restaurants
-                                <input type="checkbox" name="dining[]" class="form-control" value="2">Fast Food
-                                <input type="checkbox" name="dining[]" class="form-control" value="3">Fine Dining
-                                <input type="checkbox" name="dining[]" class="form-control" value="4">Street Food
-                                <input type="checkbox" name="dining[]" class="form-control" value="5">Bakeries
-                                <input type="checkbox" name="dining[]" class="form-control" value="6">Coffee Shops
-                                <input type="checkbox" name="dining[]" class="form-control" value="7">Cooking For Yourself
-                                <input type="checkbox" name="dining[]" class="form-control" value="8">Deliveries
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="1">Casual Restaurants<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="2">Fast Food<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="3">Fine Dining<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="4">Street Food<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="5">Bakeries<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="6">Coffee Shops<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="7">Cooking For Yourself<br>
+                                <input type="checkbox" name="dining[]" class="form-control form-check-input" value="8">Deliveries<br>
                             </div>
                         </div>
                     </div>
@@ -134,14 +134,17 @@
                     </div>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                         <label for="btnSubmit">&nbsp;</label>
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Submit</button>
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" style="background-color:#819FF7;" id="btnSubmit">Submit</button>
                     </div>
             </form>
+        </div>
+    <div class="row"><h1></h1></div>
+    <div style="text-align: center;">
+        <form action="@routes.UserController.getUserProfile" method="GET">
+            @helper.CSRF.formField
+            <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7" >Back To Profile</a>
+        </form>
     </div>
-    <form action="@routes.UserController.getUserProfile" method="GET">
-        @helper.CSRF.formField
-        <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back To Profile</a>
-    </form>
 </div>
 </body>
 </html>
