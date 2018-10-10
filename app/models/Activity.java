@@ -11,7 +11,6 @@ public class Activity
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int activityId;
     private String activityName;
     private String activityInformation;
-    private int activityTypeId;
 
     public int getActivityId()
     {
@@ -41,15 +40,5 @@ public class Activity
     public void setActivityInformation(String activityInformation)
     {
         this.activityInformation = activityInformation;
-    }
-
-    public int getActivityTypeId()
-    {
-        return activityTypeId;
-    }
-
-    public void setActivityTypeId(int activityTypeId)
-    {
-        this.activityTypeId = activityTypeId;
     }
 }

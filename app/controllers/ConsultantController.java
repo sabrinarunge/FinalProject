@@ -96,20 +96,22 @@ public class ConsultantController extends Controller
 
         session().put("destination", "" + userDestinations);
 
-        PlacesSearchResult[] places = Place.getPlace("kensington, london, rentals");
+        PlacesSearchResult[] places = Place.getPlace("kensington, london, restaurants");
+        PlaceDetails[] placesDetails = new PlaceDetails[places.length];
 
+        for(int i = 0; i < places.length; i++)
+        {
+            placesDetails[i] = Place.getPlaceDetails(places[i].placeId);
+        }
 
-//        for()
-//        {
-//            PlaceDetails details = Place.getPlaceDetails()places[i].placeId);
-//
-//        }
-        return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, places));
+        System.out.println("there are " + placesDetails[0].name);
+        return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, placesDetails));
     }
 
     @Transactional
     public Result postTrip(int reqTripId) throws InterruptedException, ApiException, IOException
     {
+        Boolean searchSubmit = false;
         String userSQL = "SELECT NEW models.UserReqTrip (r.reqTripId, u.userId, u.firstName, u.lastName, u.emailAddress, u.zipCode, u.restriction) " +
                 "FROM User u " +
                 "LEFT OUTER JOIN ReqTrip r ON u.userId = r.userId " +
@@ -158,13 +160,25 @@ public class ConsultantController extends Controller
         String searchQuery = form.get("searchquery");
 
         PlacesSearchResult[] places;
+        PlaceDetails[] placesDetails;
         if(searchQuery != null)
         {
             places = Place.getPlace(searchQuery);
+            placesDetails = new PlaceDetails[places.length];
+            searchSubmit = true;
+            for(int i = 0; i < places.length; i++)
+            {
+                placesDetails[i] = Place.getPlaceDetails(places[i].placeId);
+            }
         }
         else
         {
             places = Place.getPlace("Little Rock, AR");
+            placesDetails = new PlaceDetails[places.length];
+            for(int i = 0; i < places.length; i++)
+            {
+                placesDetails[i] = Place.getPlaceDetails(places[i].placeId);
+            }
         }
         session().get("destination");
 
@@ -177,187 +191,338 @@ public class ConsultantController extends Controller
 
         }
         */
+        if(searchSubmit != true)
+        {
+            Accommodation newAccommodation = new Accommodation();
+            TripAccommodation newTripAccommodation = new TripAccommodation();
 
-//        Accommodation newAccommodation = new Accommodation();
-//        TripAccommodation newTripAccommodation = new TripAccommodation();
-//        AccommodationType accommodationType = new AccommodationType();
-//        String accommodation1 = form.get("accommodation1");
-//        String accommodationInfo1 = form.get("accommodationinfo1");
-//        String accommodation2 = form.get("accommodation2");
-//        String accommodationInfo2 = form.get("accommodationinfo2");
-//        String accommodation3 = form.get("accommodation3");
-//        String accommodationInfo3 = form.get("accommodationinfo3");
-//
-//        newAccommodation.setAccommodationName(accommodation1);
-//        newAccommodation.setAccommodationInformation(accommodationInfo1);
-//        String newAccommodationSQL = "SELECT a FROM AccommodationType a WHERE AccommodationTypeName LIKE :accommodationType";
-//
-//        System.out.println("Hello World");
-//        accommodationType.setAccommodationTypeName(accommodationInfo1);
-//        jpaApi.em().persist(accommodationType);
-//
-//        newAccommodation.setAccommodationTypeId(accommodationType.getAccommodationTypeId());
-//        jpaApi.em().persist(newAccommodation);
-//
-//        newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
-//        newTripAccommodation.setReqTripId(reqTripId);
-//        jpaApi.em().persist(newTripAccommodation);
-//
-//        accommodationType = new AccommodationType();
-//        newAccommodation = new Accommodation();
-//        newTripAccommodation = new TripAccommodation();
-//
-//        newAccommodation.setAccommodationName(accommodation2);
-//        newAccommodation.setAccommodationInformation(accommodationInfo2);
-//        String newAccommodationSQL = "SELECT a FROM AccommodationType a WHERE AccommodationTypeName LIKE :accommodationType";
-//        try
-//        {
-//            accommodationType = jpaApi.em().createQuery(newAccommodationSQL, AccommodationType.class).setParameter("accommodationType", accommodationInfo2).getSingleResult();
-//        }
-//        catch(Exception e) {
-//            accommodationType.setAccommodationTypeName(accommodationInfo2);
-//            jpaApi.em().persist(accommodationType);
-//        }
-//        newAccommodation.setAccommodationTypeId(accommodationType.getAccommodationTypeId());
-//        jpaApi.em().persist(newAccommodation);
-//        newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
-//        newTripAccommodation.setReqTripId(reqTripId);
-//        jpaApi.em().persist(newTripAccommodation);
-//
-//        accommodationType = new AccommodationType();
-//        newAccommodation = new Accommodation();
-//        newTripAccommodation = new TripAccommodation();
-//
-//        newAccommodation.setAccommodationName(accommodation3);
-//        newAccommodation.setAccommodationInformation(accommodationInfo3);
-//        newAccommodationSQL = "SELECT a FROM AccommodationType a WHERE AccommodationTypeName LIKE :accommodationType";
-//        try
-//        {
-//            accommodationType = jpaApi.em().createQuery(newAccommodationSQL, AccommodationType.class).setParameter("accommodationType", accommodationInfo3).getSingleResult();
-//        }
-//        catch(Exception e) {
-//            accommodationType.setAccommodationTypeName(accommodationInfo2);
-//            jpaApi.em().persist(accommodationType);
-//        }
-//        newAccommodation.setAccommodationTypeId(accommodationType.getAccommodationTypeId());
-//        jpaApi.em().persist(newAccommodation);
-//        newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
-//        newTripAccommodation.setReqTripId(reqTripId);
-//        jpaApi.em().persist(newTripAccommodation);
-//
-//
-//
-//
-//
-//
+            String accommodation1 = form.get("accommodation1");
+            String accommodationInfo1 = form.get("accommodationinfo1");
+            String accommodation2 = form.get("accommodation2");
+            String accommodationInfo2 = form.get("accommodationinfo2");
+            String accommodation3 = form.get("accommodation3");
+            String accommodationInfo3 = form.get("accommodationinfo3");
 
+            newAccommodation.setAccommodationName(accommodation1);
+            newAccommodation.setAccommodationInformation(accommodationInfo1);
+            jpaApi.em().persist(newAccommodation);
 
-//
-//        Activity newActivity = new Activity();
-//        String activity1 = form.get("activity1");
-//        String activityInfo1 = form.get("activityinfo1");
-//        String activity2 = form.get("activity2");
-//        String activityInfo2 = form.get("activityinfo2");
-//        String activity3 = form.get("activity3");
-//        String activityInfo3 = form.get("activityinfo3");
-//        String activity4 = form.get("activity4");
-//        String activityInfo4 = form.get("activityinfo4");
-//        String activity5 = form.get("activity5");
-//        String activityInfo5 = form.get("activityinfo5");
-//        String activity6 = form.get("activity6");
-//        String activityInfo6 = form.get("activityinfo6");
-//        String activity7 = form.get("activity7");
-//        String activityInfo7 = form.get("activityinfo7");
-//        String activity8 = form.get("activity8");
-//        String activityInfo8 = form.get("activityinfo8");
-//        String activity9 = form.get("activity9");
-//        String activityInfo9 = form.get("activityinfo9");
-//        String activity10 = form.get("activity10");
-//        String activityInfo10 = form.get("activityinfo10");
-//
-//        newActivity.setActivityName(activity1);
-//        newActivity.setActivityInformation(activityInfo1);
-//        newActivity.setActivityName(activity2);
-//        newActivity.setActivityInformation(activityInfo2);
-//        newActivity.setActivityName(activity3);
-//        newActivity.setActivityInformation(activityInfo3);
-//        newActivity.setActivityName(activity4);
-//        newActivity.setActivityInformation(activityInfo4);
-//        newActivity.setActivityName(activity5);
-//        newActivity.setActivityInformation(activityInfo5);
-//        newActivity.setActivityName(activity6);
-//        newActivity.setActivityInformation(activityInfo6);
-//        newActivity.setActivityName(activity7);
-//        newActivity.setActivityInformation(activityInfo7);
-//        newActivity.setActivityName(activity8);
-//        newActivity.setActivityInformation(activityInfo8);
-//        newActivity.setActivityName(activity9);
-//        newActivity.setActivityInformation(activityInfo9);
-//        newActivity.setActivityName(activity10);
-//        newActivity.setActivityInformation(activityInfo10);
-//        jpaApi.em().persist(newActivity);
-//
-//        Dining newDining = new Dining();
-//        String dining1 = form.get("dining1");
-//        String diningInfo1 = form.get("dininginfo1");
-//        String dining2 = form.get("dining2");
-//        String diningInfo2 = form.get("dininginfo2");
-//        String dining3 = form.get("dining3");
-//        String diningInfo3 = form.get("dininginfo3");
-//        String dining4 = form.get("dining4");
-//        String diningInfo4 = form.get("dininginfo4");
-//        String dining5 = form.get("dining5");
-//        String diningInfo5 = form.get("dininginfo5");
-//        String dining6 = form.get("dining6");
-//        String diningInfo6 = form.get("dininginfo6");
-//        String dining7 = form.get("dining7");
-//        String diningInfo7 = form.get("dininginfo7");
-//        String dining8 = form.get("dining8");
-//        String diningInfo8 = form.get("dininginfo8");
-//        String dining9 = form.get("dining9");
-//        String diningInfo9 = form.get("dininginfo9");
-//        String dining10 = form.get("dining10");
-//        String diningInfo10 = form.get("dininginfo10");
-//
-//        newDining.setDiningName(dining1);
-//        newDining.setDiningInformation(diningInfo1);
-//        newDining.setDiningName(dining2);
-//        newDining.setDiningInformation(diningInfo2);
-//        newDining.setDiningName(dining3);
-//        newDining.setDiningInformation(diningInfo3);
-//        newDining.setDiningName(dining4);
-//        newDining.setDiningInformation(diningInfo4);
-//        newDining.setDiningName(dining5);
-//        newDining.setDiningInformation(diningInfo5);
-//        newDining.setDiningName(dining6);
-//        newDining.setDiningInformation(diningInfo6);
-//        newDining.setDiningName(dining7);
-//        newDining.setDiningInformation(diningInfo7);
-//        newDining.setDiningName(dining8);
-//        newDining.setDiningInformation(diningInfo8);
-//        newDining.setDiningName(dining9);
-//        newDining.setDiningInformation(diningInfo9);
-//        newDining.setDiningName(dining10);
-//        newDining.setDiningInformation(diningInfo10);
-//        jpaApi.em().persist(newDining);
-//
-//        Transportation newTransportation = new Transportation();
-//        String transportation = form.get("transportation");
-//        String transportationInfo = form.get("transportationinfo");
-//
-//        newTransportation.setTransportationName(transportation);
-//        newTransportation.setTransportationInformation(transportationInfo);
-//        jpaApi.em().persist(newTransportation);
-//
-//        ReqTrip newReqTrip = new ReqTrip();
-//        String tripDescription = form.get("description");
-//
-//        newReqTrip.setConsultantNotes(tripDescription);
-//        jpaApi.em().persist(newReqTrip);
+            newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+            newTripAccommodation.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripAccommodation);
 
+            newAccommodation = new Accommodation();
+            newTripAccommodation = new TripAccommodation();
+            newAccommodation.setAccommodationName(accommodation2);
+            newAccommodation.setAccommodationInformation(accommodationInfo2);
+            jpaApi.em().persist(newAccommodation);
 
+            newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+            newTripAccommodation.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripAccommodation);
 
-        return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, places));
+            newAccommodation = new Accommodation();
+            newTripAccommodation = new TripAccommodation();
+            newAccommodation.setAccommodationName(accommodation3);
+            newAccommodation.setAccommodationInformation(accommodationInfo3);
+            jpaApi.em().persist(newAccommodation);
+
+            newTripAccommodation.setAccommodationId(newAccommodation.getAccommodationId());
+            newTripAccommodation.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripAccommodation);
+
+            Activity newActivity = new Activity();
+            TripActivity newTripActivity = new TripActivity();
+
+            String activity1 = form.get("activity1");
+            String activityInfo1 = form.get("activityinfo1");
+            String activity2 = form.get("activity2");
+            String activityInfo2 = form.get("activityinfo2");
+            String activity3 = form.get("activity3");
+            String activityInfo3 = form.get("activityinfo3");
+            String activity4 = form.get("activity4");
+            String activityInfo4 = form.get("activityinfo4");
+            String activity5 = form.get("activity5");
+            String activityInfo5 = form.get("activityinfo5");
+            String activity6 = form.get("activity6");
+            String activityInfo6 = form.get("activityinfo6");
+            String activity7 = form.get("activity7");
+            String activityInfo7 = form.get("activityinfo7");
+            String activity8 = form.get("activity8");
+            String activityInfo8 = form.get("activityinfo8");
+            String activity9 = form.get("activity9");
+            String activityInfo9 = form.get("activityinfo9");
+            String activity10 = form.get("activity10");
+            String activityInfo10 = form.get("activityinfo10");
+
+            newActivity.setActivityName(activity1);
+            newActivity.setActivityInformation(activityInfo1);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity2);
+            newActivity.setActivityInformation(activityInfo2);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity3);
+            newActivity.setActivityInformation(activityInfo3);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity4);
+            newActivity.setActivityInformation(activityInfo4);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity5);
+            newActivity.setActivityInformation(activityInfo5);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity6);
+            newActivity.setActivityInformation(activityInfo6);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity7);
+            newActivity.setActivityInformation(activityInfo7);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity8);
+            newActivity.setActivityInformation(activityInfo8);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity9);
+            newActivity.setActivityInformation(activityInfo9);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            newActivity = new Activity();
+            newTripActivity = new TripActivity();
+            newActivity.setActivityName(activity10);
+            newActivity.setActivityInformation(activityInfo10);
+            jpaApi.em().persist(newActivity);
+
+            newTripActivity.setActivityId(newActivity.getActivityId());
+            newTripActivity.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripActivity);
+
+            Dining newDining = new Dining();
+            TripDining newTripDining = new TripDining();
+
+            String dining1 = form.get("dining1");
+            String diningInfo1 = form.get("dininginfo1");
+            String dining2 = form.get("dining2");
+            String diningInfo2 = form.get("dininginfo2");
+            String dining3 = form.get("dining3");
+            String diningInfo3 = form.get("dininginfo3");
+            String dining4 = form.get("dining4");
+            String diningInfo4 = form.get("dininginfo4");
+            String dining5 = form.get("dining5");
+            String diningInfo5 = form.get("dininginfo5");
+            String dining6 = form.get("dining6");
+            String diningInfo6 = form.get("dininginfo6");
+            String dining7 = form.get("dining7");
+            String diningInfo7 = form.get("dininginfo7");
+            String dining8 = form.get("dining8");
+            String diningInfo8 = form.get("dininginfo8");
+            String dining9 = form.get("dining9");
+            String diningInfo9 = form.get("dininginfo9");
+            String dining10 = form.get("dining10");
+            String diningInfo10 = form.get("dininginfo10");
+
+            newDining.setDiningName(dining1);
+            newDining.setDiningInformation(diningInfo1);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining2);
+            newDining.setDiningInformation(diningInfo2);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining3);
+            newDining.setDiningInformation(diningInfo3);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining4);
+            newDining.setDiningInformation(diningInfo4);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining5);
+            newDining.setDiningInformation(diningInfo5);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining6);
+            newDining.setDiningInformation(diningInfo6);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining7);
+            newDining.setDiningInformation(diningInfo7);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining8);
+            newDining.setDiningInformation(diningInfo8);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining9);
+            newDining.setDiningInformation(diningInfo9);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            newDining = new Dining();
+            newTripDining = new TripDining();
+            newDining.setDiningName(dining10);
+            newDining.setDiningInformation(diningInfo10);
+            jpaApi.em().persist(newDining);
+
+            newTripDining.setDiningId(newDining.getDiningId());
+            newTripDining.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripDining);
+
+            Transportation newTransportation = new Transportation();
+            TripTransportation newTripTransportation = new TripTransportation();
+
+            String transportation1 = form.get("transportation1");
+            String transportationInfo1 = form.get("transportationinfo1");
+            String transportation2 = form.get("transportation2");
+            String transportationInfo2 = form.get("transportationinfo2");
+            String transportation3 = form.get("transportation3");
+            String transportationInfo3 = form.get("transportationinfo3");
+
+            newTransportation.setTransportationName(transportation1);
+            newTransportation.setTransportationInformation(transportationInfo1);
+            jpaApi.em().persist(newTransportation);
+
+            newTripTransportation.setTransportationId(newTransportation.getTransportationId());
+            newTripTransportation.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripTransportation);
+
+            newTransportation = new Transportation();
+            newTripTransportation = new TripTransportation();
+            newTransportation.setTransportationName(transportation2);
+            newTransportation.setTransportationInformation(transportationInfo2);
+            jpaApi.em().persist(newTransportation);
+
+            newTripTransportation.setTransportationId(newTransportation.getTransportationId());
+            newTripTransportation.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripTransportation);
+
+            newTransportation = new Transportation();
+            newTripTransportation = new TripTransportation();
+            newTransportation.setTransportationName(transportation3);
+            newTransportation.setTransportationInformation(transportationInfo3);
+            jpaApi.em().persist(newTransportation);
+
+            newTripTransportation.setTransportationId(newTransportation.getTransportationId());
+            newTripTransportation.setReqTripId(reqTripId);
+            jpaApi.em().persist(newTripTransportation);
+
+            String descriptionSQL = "SELECT r FROM ReqTrip r WHERE reqtripId = :reqTripId";
+            ReqTrip newReqTrip = jpaApi.em().createQuery(descriptionSQL, ReqTrip.class).setParameter("reqTripId", reqTripId).getSingleResult();
+            newReqTrip.getBudget();
+            String tripDescription = form.get("description");
+
+            newReqTrip.setConsultantNotes(tripDescription);
+            jpaApi.em().persist(newReqTrip);
+        }
+
+        return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, placesDetails));
     }
 
 

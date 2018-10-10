@@ -23,8 +23,6 @@ public class Place
 
         PlacesSearchResult[] result = response.results;
 
-        System.out.println(result[0]);
-
         return result;
 
     }
@@ -36,8 +34,6 @@ public class Place
                 .build();
 
         PlaceDetails response = PlacesApi.placeDetails(context, placeId).await();
-
-        System.out.println(response);
 
         return response;
     }

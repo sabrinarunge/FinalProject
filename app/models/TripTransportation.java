@@ -11,9 +11,7 @@ public class TripTransportation
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int tripTransportationId;
     private int transportationId;
-    private int tripId;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private int reqTripId;
 
     public int getTripTransportationId()
     {
@@ -25,18 +23,23 @@ public class TripTransportation
         return transportationId;
     }
 
-    public int getTripId()
+    public int getReqTripId()
     {
-        return tripId;
+        return reqTripId;
     }
 
-    public LocalDate getStartDate()
+    public void setTripTransportationId(int tripTransportationId)
     {
-        return startDate;
+        this.tripTransportationId = tripTransportationId;
     }
 
-    public LocalDate getEndDate()
+    public void setTransportationId(int transportationId)
     {
-        return endDate;
+        this.transportationId = transportationId;
+    }
+
+    public void setReqTripId(int reqTripId)
+    {
+        this.reqTripId = reqTripId;
     }
 }

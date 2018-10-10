@@ -11,7 +11,6 @@ public class Dining
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int diningId;
     private String diningName;
     private String diningInformation;
-    private int diningTypeId;
 
     public int getDiningId()
     {
@@ -41,15 +40,5 @@ public class Dining
     public void setDiningInformation(String diningInformation)
     {
         this.diningInformation = diningInformation;
-    }
-
-    public int getDiningTypeId()
-    {
-        return diningTypeId;
-    }
-
-    public void setDiningTypeId(int diningTypeId)
-    {
-        this.diningTypeId = diningTypeId;
     }
 }

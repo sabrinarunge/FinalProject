@@ -196,6 +196,33 @@ public class TripController extends Controller
                 "WHERE rt.reqTripId = :reqTripId ";
         List<UserTransportation> userTransportations = jpaApi.em().createQuery(transportationSQL, UserTransportation.class).setParameter("reqTripId", reqTripId).getResultList();
 
-        return ok(views.html.existingtrips.render("" + userId, tripDetails, userAccommodations, userActivities, userDinings, userTransportations));
+        String descriptionSQL = "SELECT r FROM ReqTrip r WHERE reqtripId = :reqTripId";
+        ReqTrip newReqTrip = jpaApi.em().createQuery(descriptionSQL, ReqTrip.class).setParameter("reqTripId", reqTripId).getSingleResult();
+
+        String accommodationSelectionsSQL = "SELECT NEW models.AccommodationSelection (a.accommodationName, a.accommodationInformation) " +
+                "FROM Accommodation a " +
+                "JOIN TripAccommodation t ON a.accommodationId = t.accommodationId " +
+                "WHERE reqTripId = :reqTripId ";
+        List<AccommodationSelection> accommodationSelections = jpaApi.em().createQuery(accommodationSelectionsSQL, AccommodationSelection.class).setParameter("reqTripId", reqTripId).getResultList();
+
+        String activitySelectionsSQL = "SELECT NEW models.ActivitySelection (a.activityName, a.activityInformation) " +
+                "FROM Activity a " +
+                "JOIN TripActivity t ON a.activityId = t.activityId " +
+                "WHERE reqTripId = :reqTripId";
+        List<ActivitySelection> activitySelections = jpaApi.em().createQuery(activitySelectionsSQL, ActivitySelection.class).setParameter("reqTripId", reqTripId).getResultList();
+
+        String diningSelectionSQL = "SELECT NEW models.DiningSelection (d.diningName, d.diningInformation) " +
+                "FROM Dining d " +
+                "JOIN TripDining t ON d.diningId = t.diningId " +
+                "WHERE reqTripId = :reqTripId";
+        List<DiningSelection> diningSelections = jpaApi.em().createQuery(diningSelectionSQL, DiningSelection.class).setParameter("reqTripId", reqTripId).getResultList();
+
+        String transportationSelectionSQL = "SELECT NEW models.TransportationSelection (t.transportationName, t.transportationInformation) " +
+                "FROM Transportation t " +
+                "JOIN TripTransportation tx ON t.transportationId = tx.transportationId " +
+                "WHERE reqTripId = :reqTripId";
+        List<TransportationSelection> transportationSelections = jpaApi.em().createQuery(transportationSelectionSQL, TransportationSelection.class).setParameter("reqTripId", reqTripId).getResultList();
+
+        return ok(views.html.existingtrips.render("" + userId, tripDetails, userAccommodations, userActivities, userDinings, userTransportations, newReqTrip, accommodationSelections, activitySelections, diningSelections, transportationSelections));
     }
 }

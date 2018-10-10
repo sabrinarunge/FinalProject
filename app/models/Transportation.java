@@ -11,7 +11,6 @@ public class Transportation
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int transportationId;
     private String transportationName;
     private String transportationInformation;
-    private int transportationTypeId;
 
     public int getTransportationId()
     {
@@ -41,15 +40,5 @@ public class Transportation
     public void setTransportationInformation(String transportationInformation)
     {
         this.transportationInformation = transportationInformation;
-    }
-
-    public int getTransportationTypeId()
-    {
-        return transportationTypeId;
-    }
-
-    public void setTransportationTypeId(int transportationTypeId)
-    {
-        this.transportationTypeId = transportationTypeId;
     }
 }

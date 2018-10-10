@@ -1,4 +1,4 @@
-@(userId : String, tripDetails : List[TripDetails], userAccommodations : List[UserAccommodation], userActivities : List[UserActivity], userDinings : List[UserDining], userTransportations : List[UserTransportation])
+@(userId : String, tripDetails : List[TripDetails], userAccommodations : List[UserAccommodation], userActivities : List[UserActivity], userDinings : List[UserDining], userTransportations : List[UserTransportation], newReqTrip : ReqTrip, accommodationSelections : List[AccommodationSelection], activitySelections : List[ActivitySelection], diningSelections : List[DiningSelection], transportationSelections : List[TransportationSelection])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +59,7 @@
             </div>
             <div class="card" style="width: 2 rem;">
                 <div class="card-body">
-                    <h3 class="card-title">Your Preferences </h3>z
+                    <h3 class="card-title">Your Preferences </h3>
                     <table class="card-text table">
                         <h5>Accommodation</h5>
                         @for(userAccommodation <- userAccommodations) {
@@ -99,21 +99,19 @@
             <div class="card" style="width: 2 rem;">
                 <div class="card-body">
                     <h3 class="card-title">Your Recommendations </h3>
-                    <p>Some personal crap from consultant about the trip and why these places were chosen, blah blah blah</p>
+                    <p>@newReqTrip.getConsultantNotes</p>
                     <h5 class="card-title">Accommodation Options: </h5>
                     <table class="card-text table">
                         <tr>
                             <th>Name</th>
                             <th>Information</th>
                         </tr>
+                        @for(accommodationSelection <- accommodationSelections){
                         <tr>
-                            <td>Radisson San Jose</td>
-                            <td>
-                                Address: Calle Central y Tercera Av. 15 San José, 10604, Costa Rica
-                                Phone: +506 2010 6000
-                                Rating: 4.3
-                            </td>
+                            <td>@accommodationSelection.getAccommodationName</td>
+                            <td>@accommodationSelection.getAccommodationInformation</td>
                         </tr>
+                        }
                     </table>
                     <h5 class="card-title">Activity Options: </h5>
                     <table class="card-text table">
@@ -121,14 +119,12 @@
                             <th>Name</th>
                             <th>Information</th>
                         </tr>
+                        @for(activitySelection <- activitySelections){
                         <tr>
-                            <td>Manuel Antonio National Park</td>
-                            <td>
-                                Address: Puntarenas Province, Cantón de Aguirre, Costa Rica
-                                Phone: +506 2777 5185
-                                Rating: 4.6
-                            </td>
+                            <td>@activitySelection.getActivityName</td>
+                            <td>@activitySelection.getActivityInformation</td>
                         </tr>
+                        }
                     </table>
                     <h5 class="card-title">Dining Options: </h5>
                     <table class="card-text table">
@@ -136,14 +132,12 @@
                             <th>Name</th>
                             <th>Information</th>
                         </tr>
+                        @for(diningSelection <- diningSelections){
                         <tr>
-                            <td>El Patio Del Balmoral</td>
-                            <td>
-                                Address: Avenida Central Calles 7 y 9, San José 10303, Costa Rica, Rogelio Fernández Güell, San José, Costa Rica
-                                Phone: +506 2222 5022
-                                Rating: 4.0
-                            </td>
+                            <td>@diningSelection.getDiningName</td>
+                            <td>@diningSelection.getDiningInformation</td>
                         </tr>
+                        }
                     </table>
                     <h5 class="card-title">Transportation Options: </h5>
                     <table class="card-text table">
@@ -151,10 +145,12 @@
                             <th>Name</th>
                             <th>Information</th>
                         </tr>
+                        @for(transportationSelection <- transportationSelections){
                         <tr>
-                            <td>Little Rock to San Jose</td>
-                            <td>https://www.google.com/flights?lite=0#flt=LIT.r/m/01p8s.2018-12-13*r/m/01p8s.LIT.2018-12-19;c:USD;e:1;sd:1;t:e</td>
+                            <td>@transportationSelection.getTransportationName</td>
+                            <td>@transportationSelection.getTransportationInformation</td>
                         </tr>
+                        }
                     </table>
                 </div>
             </div>

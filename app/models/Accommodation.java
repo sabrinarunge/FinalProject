@@ -12,7 +12,6 @@ public class Accommodation
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int accommodationId;
     private String accommodationName;
     private String accommodationInformation;
-    private int accommodationTypeId;
 
     public int getAccommodationId()
     {
@@ -42,15 +41,5 @@ public class Accommodation
     public void setAccommodationInformation(String accommodationInformation)
     {
         this.accommodationInformation = accommodationInformation;
-    }
-
-    public int getAccommodationTypeId()
-    {
-        return accommodationTypeId;
-    }
-
-    public void setAccommodationTypeId(int accommodationTypeId)
-    {
-        this.accommodationTypeId = accommodationTypeId;
     }
 }
