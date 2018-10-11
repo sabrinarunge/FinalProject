@@ -19,9 +19,22 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <title>Trip</title>
+    <style>
+        .topnav {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    }
+    </style>
 </head>
 <body style="background-image:url(/assets/images/cloudysky.jpg)">
 <div class="container-fluid">
+    <div class="topnav">
+        <img src="../assets/images/newlogo.jpg" height="70" align="right"><br>
+            <form action="@routes.ConsultantController.getConsultantDashboard" method="GET">
+                @helper.CSRF.formField
+                <a href="@routes.ConsultantController.getConsultantDashboard" class="tm-btn text-uppercase" style="color:#A4A4A4 margin-top:20px">Back to Dashboard</a>
+            </form>
+    </div>
 <div class="row">
     <div class="col-6">
         <div class="card" style="width: 2 rem; margin-top: 10px;">
@@ -148,7 +161,7 @@
     <div class="col-6">
         <form method="POST">
             @helper.CSRF.formField
-            <div class="card" style="width: 2 rem; margin-top: 10px;">
+            <div class="card" style="width: 2 rem; margin-top: 10px; margin-bottom: 10px;">
                 <div class="card-body">
                     <h5 class="card-title">Create Recommendations</h5>
                     <label for="accommodation1">Accommodation Name</label>
@@ -162,9 +175,9 @@
                     <label for="accommodation3">Accommodation Name</label>
                     <input type="text" class="card-text" name="accommodation3" id="accommodation3">
                     <label for="accommodationinfo3">Information</label>
-                    <input type="text" class="card-text" name="accommodationinfo3" id="accommodationinfo3"><br>
+                    <input type="text" class="card-text" name="accommodationinfo3" id="accommodationinfo3"><br><br>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation1" name="createrecommendation1">Add To Recommendation</button><br>
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" style="background-color:#A4A4A4;" id="createrecommendation1" name="createrecommendation1">Add To Recommendation</button><br>
                     </div>
                     <br>
                     <br>
@@ -209,9 +222,9 @@
                     <label for="activity10">Activity Name</label>
                     <input type="text" class="card-text" name="activity10" id="activity10">
                     <label for="activityinfo10">Information</label>
-                    <input type="text" class="card-text" name="activityinfo10" id="activityinfo10"><br>
+                    <input type="text" class="card-text" name="activityinfo10" id="activityinfo10"><br><br>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation2" name="createrecommendation2">Add To Recommendation</button><br>
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" style="background-color:#A4A4A4;" id="createrecommendation2" name="createrecommendation2">Add To Recommendation</button><br>
                     </div>
                     <br>
                     <br>
@@ -256,9 +269,9 @@
                     <label for="dining10">Dining Name</label>
                     <input type="text" class="card-text" name="dining10" id="dining10">
                     <label for="dininginfo10">Information</label>
-                    <input type="text" class="card-text" name="dininginfo10" id="dininginfo10"><br>
+                    <input type="text" class="card-text" name="dininginfo10" id="dininginfo10"><br><br>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation3" name="createrecommendation3">Add To Recommendation</button><br>
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" style="background-color:#A4A4A4;" id="createrecommendation3" name="createrecommendation3">Add To Recommendation</button><br>
                     </div>
                     <br>
                     <br>
@@ -277,19 +290,13 @@
                     <label for="transportationinfo3">Information</label>
                     <input type="text" class="card-text" name="transportationinfo3" id="transportationinfo3"><br>
                     <label for="description">Trip Description</label>
-                    <input type="text-area" class="card-text" name="description" id="description"><br>
+                    <input type="text-area" class="card-text" name="description" id="description"><br><br>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="createrecommendation4" name="createrecommendation4">Add To Recommendation</button><br>
+                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" style="background-color:#A4A4A4;" id="createrecommendation4" name="createrecommendation4">Add To Recommendation</button><br>
                     </div>
                 </div>
             </div>
         </form>
-        <div style="text-align: right;">
-            <form action="@routes.ConsultantController.getConsultantDashboard" method="GET">
-                @helper.CSRF.formField
-                <a href="@routes.ConsultantController.getConsultantDashboard" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Back to Dashboard</a>
-            </form>
-        </div>
     </div>
 </div>
 

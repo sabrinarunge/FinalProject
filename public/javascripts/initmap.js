@@ -50,3 +50,17 @@
 
     }
 
+     function initConMap()
+       {
+
+            var myLatLong = {lat: 34.7465, lng: -92.2896};
+            var options =
+                {
+                zoom:2,
+                center:myLatLong
+                };
+
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+        }
+

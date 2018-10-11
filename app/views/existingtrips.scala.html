@@ -18,12 +18,67 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>Existing Trips</title>
+    <style>
+        .topnav {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    }
+    </style>
 </head>
 <body style="background-image:url(/assets/images/beach1.jpg)">
 <div class="container-fluid">
+    <div class="topnav" style="margin-bottom: 30px">
+        <img src="../assets/images/newlogo.jpg" height="70" align="right"><br>
+        <form action="@routes.UserController.getUserProfile" method="GET">
+            @helper.CSRF.formField
+            <a href="@routes.UserController.getUserProfile" class="tm-btn text-uppercase tm-btn-white" style="color:#819FF7 margin-top: 10px; margin-bottom: 10px">Back to Profile</a>
+        </form>
+    </div>
     <div class="row">
         <div class="col-7">
-            <div class="card" style="width: 2 rem;">
+            <div class="tm-recommended-place-wrap" style="background-color:#FFFFFF">
+                <div class="tm-recommended-place">
+                    <img src="../assets/images/louvre.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                    <div class="tm-recommended-description-box">
+                        <h3 class="tm-recommended-title" style="color:#070719">The Louvre</h3>
+                        <p class="tm-text-highlight" style="color:#819FF7">Paris</p>
+                        <p style="color:#070719">The Louvre or the Louvre Museum, is the world's largest art museum and a historic monument in Paris, France. A central landmark of the city...</p>
+                    </div>
+                    <a href="https://www.louvre.fr/en/" class="tm-recommended-price-box" style="background-color:#A4A4A4">
+                        <p class="tm-recommended-price">$</p>
+                        <p class="tm-recommended-price-link">Continue Reading</p>
+                    </a>
+                </div>
+            </div>
+            <div class="tm-recommended-place-wrap" style="background-color:#FFFFFF">
+                <div class="tm-recommended-place">
+                    <img src="../assets/images/frenchbistro.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                    <div class="tm-recommended-description-box">
+                        <h3 class="tm-recommended-title" style="color:#070719">Du Pain et des Idées</h3>
+                        <p class="tm-text-highlight" style="color:#819FF7">Paris</p>
+                        <p class="tm-text-gray" style="color:#070719">Roots in the past but eyes to the future, both age-old regional specialties as well as true innovations can be found in my boutique...</p>
+                    </div>
+                    <a href="http://dupainetdesidees.com/" class="tm-recommended-price-box" style="background-color:#A4A4A4">
+                        <p class="tm-recommended-price">$$$</p>
+                        <p class="tm-recommended-price-link">Continue Reading</p>
+                    </a>
+                </div>
+            </div>
+            <div class="tm-recommended-place-wrap" style="background-color:#FFFFFF">
+                <div class="tm-recommended-place">
+                    <img src="../assets/images/parishotel.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                    <div class="tm-recommended-description-box">
+                        <h3 class="tm-recommended-title">La Maison Gobert</h3>
+                        <p class="tm-text-highlight" style="color:#819FF7">Paris</p>
+                        <p class="tm-text-gray">Showcasing a sun terrace and views of the garden, La Maison Gobert is located in Paris. Each room at this bed and breakfast is...</p>
+                    </div>
+                    <a href="https://la-maison-gobert-fr.book.direct/en-us" class="tm-recommended-price-box" style="background-color:#A4A4A4">
+                        <p class="tm-recommended-price">$$</p>
+                        <p class="tm-recommended-price-link">Continue Reading</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card" style="width: 2 rem; margin-top: 10px; margin-bottom: 10px">
                 <div class="card-body">
                     <h3 class="card-title">Your Trip Submission </h3>
                     <table class="card-text table">
@@ -57,7 +112,7 @@
                     </table>
                 </div>
             </div>
-            <div class="card" style="width: 2 rem;">
+            <div class="card" style="width: 2 rem; margin-top: 10px; margin-bottom: 10px">
                 <div class="card-body">
                     <h3 class="card-title">Your Preferences </h3>
                     <table class="card-text table">
@@ -94,52 +149,10 @@
                     </table>
                 </div>
             </div>
-            <div class="tm-recommended-place-wrap">
-                <div class="tm-recommended-place">
-                    <img src="img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
-                    <div class="tm-recommended-description-box">
-                        <h3 class="tm-recommended-title">Insert Some Activity</h3>
-                        <p class="tm-text-highlight" style="color:#819FF7">Singapore</p>
-                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
-                    </div>
-                    <a href="#" class="tm-recommended-price-box" style="background-color:#A4A4A4">
-                        <p class="tm-recommended-price">$440</p>
-                        <p class="tm-recommended-price-link">Continue Reading</p>
-                    </a>
-                </div>
-            </div>
-            <div class="tm-recommended-place-wrap">
-                <div class="tm-recommended-place">
-                    <img src="img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
-                    <div class="tm-recommended-description-box">
-                        <h3 class="tm-recommended-title">Insert Some Dining</h3>
-                        <p class="tm-text-highlight" style="color:#819FF7">Singapore</p>
-                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
-                    </div>
-                    <a href="#" class="tm-recommended-price-box" style="background-color:#A4A4A4">
-                        <p class="tm-recommended-price">$440</p>
-                        <p class="tm-recommended-price-link">Continue Reading</p>
-                    </a>
-                </div>
-            </div>
-            <div class="tm-recommended-place-wrap">
-                <div class="tm-recommended-place">
-                    <img src="img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
-                    <div class="tm-recommended-description-box">
-                        <h3 class="tm-recommended-title">Insert Some Hotel</h3>
-                        <p class="tm-text-highlight" style="color:#819FF7">Singapore</p>
-                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
-                    </div>
-                    <a href="#" class="tm-recommended-price-box" style="background-color:#A4A4A4">
-                        <p class="tm-recommended-price">$440</p>
-                        <p class="tm-recommended-price-link">Continue Reading</p>
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="col-5">
-            <div class="card" style="width: 2 rem;">
-                <div class="card-body">
+            <div class="card" style="width: 2 rem; margin-bottom: 10px">
+                <div class="card-body" style="margin-top: 10px; margin-bottom: 10px">
                     <h3 class="card-title">Your Recommendations </h3>
                     <p>@newReqTrip.getConsultantNotes</p>
                     <h5 class="card-title">Accommodation Options: </h5>
@@ -196,12 +209,8 @@
                     </table>
                 </div>
             </div>
+        </div>
     </div>
-</div>
-<form action="@routes.UserController.getUserProfile" method="GET">
-    @helper.CSRF.formField
-    <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Back to Profile</a>
-</form>
 </div>
 </body>
 </html>

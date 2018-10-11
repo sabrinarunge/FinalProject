@@ -19,11 +19,24 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <title>Trip Information</title>
+    <style>
+        .topnav {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    }
+    </style>
 </head>
 <body style="background-image:url(/assets/images/globe.jpg)">
 <div class="container-fluid">
-    <div class="row tm-banner-row" id="tm-section-search">
-        <form method="POST" class="tm-search-form tm-section-pad-2">
+    <div class="topnav">
+        <img src="../assets/images/newlogo.jpg" height="70" align="right"><br>
+            <form action="@routes.UserController.getUserProfile" method="GET">
+                @helper.CSRF.formField
+                <a href="@routes.UserController.getUserProfile" class="tm-btn text-uppercase tm-btn-white" style="color:#819FF7 margin-top: 10px; margin-bottom: 10px" >Back To Profile</a>
+            </form>
+    </div>
+    <div class="row tm-banner-row" id="tm-section-search" style=" margin-bottom: 10px color-background:#A4A4A4">
+        <form method="POST" class="tm-search-form">
             @helper.CSRF.formField
             <h1>Add a New Trip?</h1>
             <div class="row">
@@ -139,12 +152,6 @@
             </form>
         </div>
     <div class="row"><h1></h1></div>
-    <div style="text-align: center;">
-        <form action="@routes.UserController.getUserProfile" method="GET">
-            @helper.CSRF.formField
-            <a href="@routes.UserController.getUserProfile" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7" >Back To Profile</a>
-        </form>
-    </div>
 </div>
 </body>
 </html>

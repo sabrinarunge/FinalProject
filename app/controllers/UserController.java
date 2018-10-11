@@ -241,16 +241,4 @@ public class UserController extends Controller
         return ok("404");
     }
 
-    @Transactional
-    public Result getThis()
-    {
-        return ok(views.html.journeytemplate.render());
-    }
-
-    @Transactional
-    public Result getViewRecommendations()
-    {
-        return ok(views.html.viewrecommendations.render());
-    }
-
 }

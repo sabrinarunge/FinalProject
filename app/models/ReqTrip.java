@@ -82,7 +82,10 @@ public class ReqTrip
         {
             this.pets = true;
         }
-        this.pets = false;
+        else
+        {
+            this.pets = false;
+        }
     }
 
     public BigDecimal getBudget()

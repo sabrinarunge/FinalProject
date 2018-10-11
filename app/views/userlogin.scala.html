@@ -17,32 +17,42 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <title>User Login</title>
+    <style>
+        .topnav {
+    background-color: #FFFFFF;
+    overflow: hidden;
+    }
+    </style>
 </head>
-<body>
+<body style="background-image:url(/assets/images/travelstuff.jpg)">
+<div class="container-fluid">
+    <div class="topnav">
+        <img src="../assets/images/newlogo.jpg" height="70" align="right">
+    </div>
 <div class="row tm-banner-row" id="tm-section-search">
-
     <form method="POST" class="tm-search-form tm-section-pad-2">
         @helper.CSRF.formField
         <div class="form-row tm-search-form-row">
             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                 <h3>Log in to your account:</h3><br>
                 <label for="email">Email</label>
-                <input name="email" type="text" class="form-control" id="email">
+                <input name="email" type="text" class="form-control" style="background-color:#FFFFFF" id="email">
                 <label for="psw">Password</label>
-                <input type="password" name="psw" class="form-control" id="psw">
+                <input type="password" name="psw" class="form-control" style="background-color:#FFFFFF" id="psw"><br>
                 <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                    <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="submit" name="submit">Log In</button>
+                    <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" style="background-color:#A4A4A4;" id="submit" name="submit">Log In</button>
                 </div>
             </div>
             </div>
     </form>
     <div class="form-group tm-form-group tm-form-group-1">
-        <label>Don't have an account?</label>
+        <label style="color:#FFFFFF">Don't have an account?</label>
         <form action="@routes.UserController.getSignUp" method="GET">
             @helper.CSRF.formField
-            <a href="@routes.UserController.getSignUp" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Sign Up</a>
+            <a href="@routes.UserController.getSignUp" class="text-uppercase tm-btn tm-btn-white" style="color:#819FF7">Sign Up</a>
         </form>
     </div>
+</div>
 </div>
 </body>
 </html>

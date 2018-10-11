@@ -608,13 +608,4 @@ public class ConsultantController extends Controller
         return ok(views.html.trip.render(userReqTrips, trips, userDestinations, userAccommodations, userActivities, userDinings, userTransportations, placesDetails));
     }
 
-
-    @Transactional
-    public Result getUsers()
-    {
-        String sql = "SELECT u FROM User u";
-        List<User> users = jpaApi.em().createQuery(sql, User.class).getResultList();
-        return ok(views.html.users.render(users));
-    }
-
 }
