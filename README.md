@@ -25,8 +25,10 @@ Tripify is a travel planning app where users can connect with travel consultants
 ## Create Recommendations Example (Consultant View)
 
 ![Screenshot](public/images/tripdetailsexample.png)
+![Screenshot](public/images/placessearchexample2.png)
 
-![Screenshot](public/images/placessearchexample.png)
+
+![Screenshot](public/images/placessearchexample3.png)
 
 
 
